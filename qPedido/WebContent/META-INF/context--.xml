@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/Project" reloadable="true" docBase="Project">
+	<Resource auth="Container" 
+		driverClassName="com.intersys.jdbc.CacheDriver" 
+		logAbandoned="true" 
+		maxActive="3" 
+		maxIdle="3"
+		maxWait="10000" 
+		name="jdbc/cacheapp" 
+		password="@ppprecatorios" 
+		removeAbandoned="true" 
+		removeAbandonedTimeout="60" 
+		type="javax.sql.DataSource"
+		url="jdbc:Cache://172.17.1.176:1972/TJSE" 
+		username="tcprecatorios" 
+		validationQuery="select 1 from dual" />
+	<ResourceLink global="jdbc/cacheapp" 
+		name="jdbc/cacheapp" 
+		factory="org.apache.naming.factory.DataSourceLinkFactory" 
+		type="javax.sql.DataSource"
+		username="tcprecatorios" 
+		password="@ppprecatorios"  />
+</Context>

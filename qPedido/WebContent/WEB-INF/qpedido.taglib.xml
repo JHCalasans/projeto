@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<facelet-taglib version="2.0"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd">
+	<namespace>http://www.ido.com.br/jsf/components</namespace>
+	<tag>
+		<tag-name>linkExemplo</tag-name>
+		<source>tags/link/linkExemplo.xhtml</source>
+		<attribute>
+			<description>Identificador do Componente</description>
+			<name>id</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>		
+		<attribute>
+			<description>Descricao do Campo</description>
+			<name>descricao</name>
+			<required>true</required>
+			<type>java.lang.String</type>
+		</attribute>
+	</tag>
+	<function>
+		<function-name>escaparJS</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String escaparJS(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>concat</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String concat(java.lang.Object, java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>concat2</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String concat(java.lang.Object, java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>concat3</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String concat(java.lang.Object, java.lang.Object, java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>concat4</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String concat(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>concat5</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String concat(java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object, java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>datediffi</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>long datediffi(java.util.Date,java.util.Date,java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>datediffd</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>double datediffd(java.util.Date,java.util.Date,java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>sysEnum</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.io.Serializable sysEnum(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>sysEnumDescricao</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String sysEnumDescricao(java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>sysEnumDescricaoPorCodigo</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String sysEnumDescricaoPorCodigo(java.lang.String, java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>toDate</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.util.Date toDate(java.lang.String, java.lang.String)</function-signature>
+	</function>
+	<function>
+		<function-name>length</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>int length(java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>estaNaLista</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>boolean estaNaLista(java.lang.Object, java.lang.Object)</function-signature>
+	</function>
+	<function>
+		<function-name>between</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>boolean between(double, double, double)</function-signature>
+	</function>
+	<function>
+		<function-name>piece</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String piece(java.lang.String, java.lang.String, int)</function-signature>
+	</function>
+		<function>
+		<function-name>formatarData</function-name>
+		<function-class>br.com.ido.funcoes.Funcoes</function-class>
+		<function-signature>java.lang.String formatarData(java.util.Date, java.lang.String)</function-signature>
+	</function>	
+</facelet-taglib>

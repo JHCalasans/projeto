@@ -1,0 +1,360 @@
+body {
+	font-size: 11px;
+	font-family: Arial !important;
+	overflow-y: scroll;
+	z-index: -1;
+}
+
+form span.p_like input,form span.p_like select,form span.p_like img,form span.p_like span,form span.p_like label
+	{
+	display: block;
+	float: left;
+}
+
+
+
+form p,form span.p_like,form div.p_like {
+	clear: both;
+	float: left;
+	margin: 3px 0;
+	width: 100%;
+}
+
+div.panelUsuario {
+	width: 320px;
+	height: 120px;
+	top: 10px;
+	right: 15%;
+	position: absolute;
+	border-radius: 7px 7px 7px 7px;
+	background-color: transparent;
+	color: #FFFFFF;
+	overflow: hidden;
+	font-family: Arial, Calibri;
+	font-size: smaller;
+	font-weight: bold;
+}
+
+ul.ui-menu-child {
+	width: 220px !important;
+}
+
+.ui-outputlabel .ui-outputlabel-rfi {
+	display: inline;
+	float: none;
+	margin-left: 0;
+	color: red;
+}
+
+.buttonPosition {
+	text-align: center;
+	width: 100%;
+}
+
+.clear {
+	clear: both;
+	float: none;
+}
+
+.hidden {
+	visibility: hidden;
+}
+
+.OutputLabelCampo {
+	font-weight: bold;
+	text-align: left;
+	padding-right: 10px;
+	padding-top: 4px;
+	width: 100px;
+}
+
+
+.OutputLabelValidator {
+	font-weight: bold;
+	text-align: left;
+	padding-right: 10px;
+	padding-top: 4px;
+	color: red;
+}
+
+.panelAjax {
+	text-align: Center;
+	border-width: 1px;
+	border-color: #404040;
+	position: absolute;
+	heigth: 47px;
+	vertical-align: baseline;
+	top: 50%;
+	left: 50%;
+	margin-top: -23px;
+	margin-left: -106px;
+	z-index: 5000;
+}
+
+.ui-datatable .ui-row-editor .ui-icon-pencil {
+    background: url('/Project/resources/edit.png');
+    background-size: 16px 16px;
+}
+
+.ui-datatable .ui-row-editor .ui-icon-check {
+    background: url('/Project/resources/check.png');
+    background-size: 16px 16px;
+}
+
+.OutputLabelValor {
+	text-align: left;
+	padding-top: 4px;
+}
+
+.OutputLabelLink {
+	text-align: left;
+	padding-top: 4px;
+	color: blue !important;
+	text-decoration: underline;
+}
+
+.OutputLabelLinkExterno {
+	text-align: left;
+	padding-top: 4px;
+	color: blue !important;
+	text-decoration: underline;
+	font-size: 12px;
+}
+
+.OutputLabelLinkSuspenso {
+	text-align: left;
+	padding-top: 4px;
+	color: darkgray !important;
+	text-decoration: underline;
+}
+
+.cabecalhoDataTable {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+	float: none;
+}
+
+.titulo {
+	font-weight: bold;
+	text-align: left !important;
+	font-family: Arial;
+	width: 100%;
+	font-size: 18px;
+	color: white;
+	background: -webkit-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%);
+	background: -o-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%); 
+	background: -moz-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%);
+	background: linear-gradient(to left, #4f7199 1%, #aacae2 47%, #607a99 100%);
+}
+
+.subtitulo {
+	font-size: 16px !important;
+	font-weight: bold;
+	text-align: center;
+	width: 100%;
+	float: none;
+}
+
+.semBorda tr, .semBorda td {  
+    border: none !important;  
+}
+
+.botao {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.botaoGrid {
+	font-weight: bold;
+	font-size: 4px;
+}
+
+.banner {
+	width: 100%;
+}
+
+.negrito {
+	font-weight: bold;
+}
+
+.vermelho {
+	background-color: #FF5353;
+	font-weight: bold;
+	color: black;
+}
+
+.amarelo {
+	background-color: #FFF06A;
+	font-weight: bold;
+	color: black
+}
+
+.verde {
+	background-color: #B3FF99;
+	font-weight: bold;
+	color: black
+}
+
+#background { /* Cor de fundo do nÃ­vel 1 do menu (toda a barra) */
+	background-color: #363233;
+}
+
+li:hover { /* Cor do texto do item apontado pelo cursor */
+	color: #FFFFFF;
+	/* Cor de fundo do item apontado pelo cursor */
+	background-color: #27809e;
+}
+
+a { /* ConfiguraÃ§Ãµes dos textos dos itens */
+	font-family: "Lucida Sans Unicode", Tahoma, Verdana, Helvetica,
+		sans-serif;
+	font-size: small;
+	color: #c0c8ca;
+	/* Exibir os links do menu sem underline */
+	text-decoration: none;
+}
+
+a:active { /* ConfiguraÃ§Ãµes dos textos do item clicado (ativo) */
+	font-weight: bold;
+}
+
+#menu {
+	
+}
+
+#menu li {
+	
+}
+
+#menu li ul { /* Cor de fundo do menu de nivel 2 (vertical) */
+	background-color: #363233;
+}
+
+#menu li ul li {
+	
+}
+
+#menu li ul li a { /* Cor de texto dos itens do nivel 2 (vertical) */
+	color: #FFFFFF;
+}
+
+#menu li ul li ul {
+	
+}
+
+#menu li ul li:hover ul {
+	
+}
+
+#menu li ul li ul li {
+	
+}
+
+#menu li>ul {
+	
+}
+
+#menu li:hover ul,#menu li:hover ul li {
+	
+}
+
+form {
+	
+}
+
+img {
+	border-style: none;
+}
+
+#erro {
+	float: left;
+	width: 100%;
+	display: none;
+	margin-right: 6px;
+	padding: 20px 20px 20px 20px;
+	background: #FFFFCC;
+	color: #990000;
+}
+
+#erro li:hover {
+	background: #FFFFCC;
+	color: #990000;
+}
+
+.box_pesquisa {
+	border: 1px solid;
+}
+
+.ui-growl {
+	top: 150px !important;
+}
+
+ul.infocores li {
+	list-style: none;
+	float: left;
+	clear: both;
+	margin-top: 5px;
+	width: 100%;
+}
+
+ul.infocores li p {
+	margin: 2px;
+}
+
+span.box {
+	height: 12px;
+	width: 12px;
+	margin-right: 5px;
+}
+
+.box {
+	display: block;
+	border: 1px solid grey;
+	float: left;
+	height: 40px;
+}
+
+span.texto {
+	float: left;
+}
+
+span.valor {
+	float: right;
+}
+
+.ui-datatable thead th,.ui-datatable tbody td,.ui-datatable tfoot td {
+	white-space: normal !important;
+}
+
+.ui-datatable-resizable table {
+	table-layout: auto;
+	width: 100%;
+}
+
+.ui-selectonemenu {
+
+}
+
+.myHeader{
+    background-color : gray !important;
+    font-weight: bold !important;
+}
+
+.ui-helper-hidden-accessible {
+	left: -999999px !important;
+}
+
+.lupa {
+	background-image: url('/qPedido/resources/lupa.png');
+    background-size: 16px 16px;
+}
+
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}

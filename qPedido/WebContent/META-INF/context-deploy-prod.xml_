@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/RPV">
+	<ResourceLink global="jdbc/cacheapp" name="jdbc/cacheapp" factory="org.apache.naming.factory.DataSourceLinkFactory"
+		type="javax.sql.DataSource" username="tcprecatorios" password="@ppprecatorios"/>
+</Context>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</h:head>
+<ui:composition template="/paginas/masterPage.xhtml">
+	<ui:param name="headerConteudo"
+		value="#{bundle.tipoPagamentoCadastroTitulo}" />
+	<ui:param name="bean" value="#{tipoPagamentoBean}" />
+	<ui:param name="actionSalvar" value="actionSalvar" />
+	<ui:param name="actionNovo" value="actionNovo" />
+	<ui:param name="actionVoltar" value="actionVoltar" />
+	<ui:define name="conteudo">
+		<h:panelGrid id="grid" columns="2" layout="block">
+			<p:outputLabel value="#{bundle.tipoPagamentoTipoPag}:"
+				for="somTipoPagamento" styleClass="OutputLabelCampo"
+				style="width:30px" />
+			<p:selectOneMenu id="somTipoPagamento" required="true"
+				requiredMessage="#{bundle.campoObrigatorio}"
+				value="#{tipoPagamentoBean.codigoTipoPagamento}">
+				<f:selectItem itemLabel="#{bundle.selecione}" itemValue="" />
+				<f:selectItems value="#{tipoPagamentoBean.listaTiposPagamento}"
+					var="tipoPag" itemValue="#{tipoPag.codigo}"
+					itemLabel="#{tipoPag.descricao}" />
+			</p:selectOneMenu>
+
+			<p:outputLabel value="#{bundle.ativoInativo}: " for="sbbAtivo"
+				styleClass="OutputLabelCampo" style="width:30px" />
+			<p:selectBooleanButton id="sbbAtivo" onLabel="Ativo" required="true"
+				offLabel="Inativo" onIcon="ui-icon-check" offIcon="ui-icon-close"
+				style="width:60px" value="#{tipoPagamentoBean.tipoPagamento.ativo}" />
+		</h:panelGrid>
+
+	</ui:define>
+</ui:composition>
+</html>
+

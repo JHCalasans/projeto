@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<converter>
+		<converter-id>cnpjConverter</converter-id>
+		<converter-class>br.com.ido.qpedido.util.CnpjConverter</converter-class>
+	</converter>
+	<managed-bean>
+		<managed-bean-name>currentDate</managed-bean-name>
+		<managed-bean-class>java.util.Date</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+	</managed-bean>
+	<navigation-rule>
+		<navigation-case>
+			<from-outcome>erro</from-outcome>
+			<to-view-id>/paginas/erro/Erro.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<application>
+		<action-listener>br.com.ido.qpedido.acl.ExceptionHandler</action-listener>
+		<resource-bundle>
+			<base-name>br.com.ido.qpedido.util.Bundle</base-name>
+			<var>bundle</var>
+		</resource-bundle>
+		<locale-config>
+			<default-locale>pt-BR</default-locale>
+			<supported-locale>pt_BR</supported-locale>
+		</locale-config>
+	</application>
+	<factory>
+		<exception-handler-factory>br.com.ido.qpedido.util.ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
+	</factory>
+	<lifecycle>
+		<phase-listener>br.com.ido.qpedido.acl.FaseControleAcesso</phase-listener>
+		<phase-listener>br.com.ido.qpedido.acl.MessageHandler</phase-listener>
+	</lifecycle>
+</faces-config>

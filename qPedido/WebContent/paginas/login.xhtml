@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="/paginas/masterPage.xhtml">
+	<ui:param name="moduloPagina" value="3" />
+	<ui:param name="tituloPagina" value="Sistema +QPedido" />
+	<f:metadata>
+	</f:metadata>
+	<ui:define name="conteudo">
+		<h:form id="loginForm" prependId="false">
+			<p:messages closable="true" globalOnly="true" id="msgs" />
+			<div align="center">
+				<p:panel id="loginPanel"
+					style="width:205px; text-align: center; border: none">
+					<h:outputLabel value="Login" styleClass="titulo" />
+					<hr></hr>
+					<br></br>
+					<h:panelGroup styleClass="p_like">
+						<p:outputLabel value="Login " for="loginName"
+							styleClass="OutputLabelCampo" style="width:30px" />
+						<p:inputText id="loginName"
+							validatorMessage="Login não pode estar em branco!">
+							<f:validateLength minimum="1" />
+						</p:inputText>
+					</h:panelGroup>
+					<div class="clear"></div>
+					<h:panelGroup styleClass="p_like">
+						<h:outputLabel value="Senha " for="loginSenha"
+							styleClass="OutputLabelCampo" style="width:30px" />
+						<p:password feedback="false" id="loginSenha"
+							validatorMessage="Senha não pode estar em branco!" minLength="1" />
+					</h:panelGroup>
+					<br></br>
+					<div class="clear"></div>
+					<br></br>
+					<h:panelGroup styleClass="p_like buttonPosition">
+						<p:commandButton id="btnEntrar" value="Entrar" ac
+							icon="ui-icon ui-icon-key" update="msgs, loginForm" />
+					</h:panelGroup>
+
+					<div class="clear"></div>
+				</p:panel>
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>
+
+</html>

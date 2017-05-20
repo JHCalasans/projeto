@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ido="http://www.ido.com.br/jsf/components">
+<h:head>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>#{tituloPagina}</title>
+		<meta http-equiv="Cache-Control"
+			content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+	</f:facet>
+
+	<f:facet name="last">
+		<!--[if lt IE 9]>
+		<h:outputScript library="js" name="html5.js" />
+		<![endif]-->
+		<h:outputScript library="js" name="translations.js" />
+		<h:outputScript library="js" name="wiOpen.js" />
+		<h:outputScript library="js" name="util.js" />
+		<h:outputScript library="javax.faces" name="jsf.js" />
+		<link type="text/css" rel="stylesheet"
+			href="#{request.contextPath}/resources/css/estilo.css" />
+		<link rel="shortcut icon" type="image/x-icon"
+			href="#{request.contextPath}/resources/favicon.ico" />
+	</f:facet>
+</h:head>
+<h:body>
+
+	<ui:debug hotkey="k" />
+	<p:ajaxStatus>
+		<f:facet name="start">
+			<h:panelGroup>
+				<div class="ui-widget-overlay"
+					style="z-index: 4500; position: fixed;" />
+				<p:panel id="panelAjaxStart" styleClass="panelAjax"
+					style="background-color: white; position: fixed;">
+
+					<h:panelGrid id="pgAjaxLoader" columns="1"
+						style="position: static; background-color: FFFF66;border: none;">
+						<strong> <span
+							style="font-size: 10pt; font-family: Arial; color: black;">Processando
+								...</span>
+						</strong>
+						<h:graphicImage value="/resources/ajax-loader.gif" />
+
+					</h:panelGrid>
+				</p:panel>
+			</h:panelGroup>
+		</f:facet>
+
+		<f:facet name="complete">
+			<h:outputLabel value="" />
+		</f:facet>
+	</p:ajaxStatus>
+
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" header="+QuePedido"
+			style="text-align: center; font-size: 14px;z-index: 1;">
+			<h:form id="formMenuNorth" enctype="multipart/form-data">
+				<p:menubar>
+					<p:submenu label="#{bundle.menuCadastro}" icon="ui-icon-document">
+						<p:menuitem value="#{bundle.menuCadastroEmpresa}" ajax="true"
+							action="/paginas/empresa/cadastrarEmpresa.ido?faces-redirect=true"
+							immediate="true" />
+						<p:menuitem value="#{bundle.menuCadastroTipoPag}" ajax="true"
+							action="/paginas/tipoPagamento/consultarTipoPagamento.ido?faces-redirect=true"
+							immediate="true" />
+					</p:submenu>
+					<p:menuitem value="Movimentação" icon="ui-icon-pencil" />
+					<p:menuitem value="Consultas" icon="ui-icon-search" />
+					<p:menuitem value="Relatórios" icon="ui-icon-print" />
+					<p:menuitem value="Sair" icon="ui-icon-close" />
+				</p:menubar>
+			</h:form>
+
+		</p:layoutUnit>
+
+		<p:layoutUnit position="south" header="Sistema de controle de pedidos"
+			style="text-align: center;">
+			<h:outputText
+				value="® 2017 - Todos os direitos reservados à Ido Tecnologia" />
+		</p:layoutUnit>
+
+
+		<p:layoutUnit position="west" header="Opções">
+			<h:form id="formMenuWest" prependId="false">
+				<p:menu>
+					<p:submenu label="#{bundle.acoes}" icon="ui-icon-gear"
+						style="vertical-align: middle;">
+						<p:menuitem value="#{bundle.novoRegistro}" icon="ui-icon-document"
+							action="#{bean[actionNovo]}" disabled="#{empty actionNovo}" />
+						<p:menuitem value="#{bundle.salvarRegistro}" icon="ui-icon-disk"
+							disabled="#{empty actionSalvar}"
+							onclick="$('#btSalvarSecret').click();" />
+						<p:menuitem value="#{bundle.alterarRegistro}"
+							disabled="#{empty actionAlterar}" icon="ui-icon-refresh"
+							onclick="$('#btAlterarSecret').click();"
+							process="@this,:formCenter" />
+						<p:menuitem value="#{bundle.excluirRegistro}"
+							onclick="$('#btExcluirSecret').click();"
+							process="@this,:formCenter" disabled="#{empty actionExcluir}"
+							icon="ui-icon-close" />
+						<p:menuitem value="#{bundle.voltarTela}"
+							action="#{bean[actionVoltar]}" disabled="#{empty actionVoltar}"
+							icon="ui-icon-arrowreturn-1-w" />
+					</p:submenu>
+					<p:submenu label="#{bundle.navegacao}">
+						<p:menuitem value="#{bundle.externa}"
+							url="http://www.primefaces.org" icon="ui-icon-home" />
+						<p:menuitem value="#{bundle.interna}" icon="ui-icon-star" />
+					</p:submenu>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+
+		<p:layoutUnit id="centerLayout" header="#{headerConteudo}"
+			position="center">
+			<h:form id="formCenter" prependId="false">
+				<div>
+					<p:panel id="conteudo">
+						<div class="clear" id="div_pre_conteudo">
+							<p:messages closable="true" globalOnly="true" id="msgs" />
+						</div>
+						<ui:insert name="conteudo" />
+						<div class="clear" id="div_pos_conteudo" />
+						<p:commandButton id="btSalvarSecret" widgetVar="btSalvarSecret"
+							action="#{bean[actionSalvar]}" style="display: none;"
+							type="Secret" update="conteudo" />
+						<p:commandButton id="btAlterarSecret" widgetVar="btAlterarSecret"
+							action="#{bean[actionAlterar]}" style="display: none;"
+							type="Secret" update="conteudo" />
+						<p:commandButton id="btExcluirSecret" widgetVar="btExcluirSecret"
+							action="#{bean[actionExcluir]}" style="display: none;"
+							type="Secret" update="conteudo">
+							<p:confirm header="#{bundle.confirmacao}"
+								message="#{bundle.msgConfirmacaoExcluir}" icon="ui-icon-alert" />
+						</p:commandButton>
+
+						<p:confirmDialog id="cdRemoverRegistro" global="true"
+							showEffect="fade" hideEffect="fade">
+							<h:panelGroup layout="block" style="text-align:center;">
+								<p:commandButton value="#{bundle.sim}" type="button"
+									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+								<p:commandButton value="#{bundle.nao}" type="button"
+									styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+							</h:panelGroup>
+						</p:confirmDialog>
+					</p:panel>
+				</div>
+			</h:form>
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</h:html>

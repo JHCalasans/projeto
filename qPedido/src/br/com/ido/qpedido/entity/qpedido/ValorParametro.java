@@ -13,13 +13,13 @@ import javax.persistence.Table;
 import br.com.ido.dao.Entidade;
 
 @Entity
-@Table(name = ValorParametro.nomeTabela, schema = ValorParametro.esquema, catalog = "maisqpedido")
+@Table(name = ValorParametro.nomeTabela, schema = ValorParametro.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "ValorParametro.listarValorParametroPelaChave", query = "select v from ValorParametro v"
 				+ " where v.parametro.chave = :chave" + " order by v.codigo") })
 public class ValorParametro extends Entidade {
 
-	public final static String esquema = "maisqpedido";
+	public final static String esquema = "projeto";
 
 	public final static String nomeTabela = "valor_parametro";
 

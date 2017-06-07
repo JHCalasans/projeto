@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import br.com.ido.dao.Entidade;
 
 @Entity
-@Table(name = EnderecoEmpresa.nomeTabela, schema = EnderecoEmpresa.esquema, catalog = "maisqpedido")
+@Table(name = EnderecoEmpresa.nomeTabela, schema = EnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "EnderecoEmpresa.obterEnderecoFiliais", query = "select e from EnderecoEmpresa e"
 				+ " where e.empresa.codigo = :codEmpresa and e.filial = true")
@@ -24,12 +24,12 @@ import br.com.ido.dao.Entidade;
 public class EnderecoEmpresa extends Entidade {
 
 	private static final long serialVersionUID = -9165454169466824008L;
-	public final static String esquema = "maisqpedido";
+	public final static String esquema = "projeto";
 	public final static String nomeTabela = "endereco_empresa";
 
 	@Id
 	@Column(name = "cod_endereco_empresa", nullable = false)
-	@SequenceGenerator(name = "endereco_empresa_cod_endereco_empresa_seq", sequenceName = "maisqpedido.endereco_empresa_cod_endereco_empresa_seq", allocationSize = 1)
+	@SequenceGenerator(name = "endereco_empresa_cod_endereco_empresa_seq", sequenceName = "projeto.endereco_empresa_cod_endereco_empresa_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_empresa_cod_endereco_empresa_seq")
 	private Integer codigo;
 

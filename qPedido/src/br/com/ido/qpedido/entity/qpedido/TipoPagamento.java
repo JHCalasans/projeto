@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import br.com.ido.dao.Entidade;
 
 @Entity
-@Table(name = TipoPagamento.nomeTabela, schema = TipoPagamento.esquema, catalog = "maisqpedido")
+@Table(name = TipoPagamento.nomeTabela, schema = TipoPagamento.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "TipoPagamento.obterTiposPagamentoAtivos", query = "select t from TipoPagamento t "
 				+ "where t.ativo = true")
@@ -20,7 +20,7 @@ import br.com.ido.dao.Entidade;
 })
 public class TipoPagamento extends Entidade {
 
-	public final static String esquema = "maisqpedido";
+	public final static String esquema = "projeto";
 	public final static String nomeTabela = "tipo_pagamento";
 	private static final long serialVersionUID = -3450117838551694587L;
 

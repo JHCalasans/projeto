@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import br.com.ido.dao.Entidade;
 
 @Entity
-@Table(name = TipoPagamentoEnderecoEmpresa.nomeTabela, schema = TipoPagamentoEnderecoEmpresa.esquema, catalog = "maisqpedido")
+@Table(name = TipoPagamentoEnderecoEmpresa.nomeTabela, schema = TipoPagamentoEnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "TipoPagamentoEnderecoEmpresa.obterPorEnderecoEmpresa", query = "select t from TipoPagamentoEnderecoEmpresa t "
 				+ "where t.enderecoEmpresa.codigo = :codEnderecoEmpresa")
@@ -25,12 +25,12 @@ import br.com.ido.dao.Entidade;
 })
 public class TipoPagamentoEnderecoEmpresa extends Entidade {
 
-	public final static String esquema = "maisqpedido";
+	public final static String esquema = "projeto";
 	public final static String nomeTabela = "tipo_pagamento_endereco_empresa";
 	private static final long serialVersionUID = -3450117838551694587L;
 
 	@Id
-	@SequenceGenerator(name = "tipo_pagamento_endereco_empresa_cod", sequenceName = "maisqpedido.tipo_pagamento_endereco_empresa_cod_tipo_pagamento_endereco_empresa_seq", allocationSize = 1)
+	@SequenceGenerator(name = "tipo_pagamento_endereco_empresa_cod", sequenceName = "projeto.tipo_pagamento_endereco_empresa_cod_tipo_pagamento_endereco_empresa_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tipo_pagamento_endereco_empresa_cod")
 	@Column(name = "cod_tipo_pagamento_endereco_empresa", nullable = false)
 	private Integer codigo;

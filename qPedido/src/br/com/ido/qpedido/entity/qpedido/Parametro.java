@@ -8,10 +8,10 @@ import javax.persistence.Table;
 import br.com.ido.dao.Entidade;
 
 @Entity
-@Table(name = Parametro.nomeTabela, schema = Parametro.esquema, catalog = "maisqpedido")
+@Table(name = Parametro.nomeTabela, schema = Parametro.esquema, catalog = "projeto")
 public class Parametro extends Entidade {
 
-	public final static String esquema = "maisqpedido";
+	public final static String esquema = "projeto";
 	public final static String nomeTabela = "Parametro";
 	private static final long serialVersionUID = -3450117838551694587L;
 

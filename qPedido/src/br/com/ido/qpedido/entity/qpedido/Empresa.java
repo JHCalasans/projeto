@@ -13,16 +13,16 @@ import javax.persistence.Table;
 import br.com.ido.dao.Entidade;
 
 @Entity
-@Table(name = Empresa.nomeTabela, schema = Empresa.esquema, catalog = "maisqpedido")
+@Table(name = Empresa.nomeTabela, schema = Empresa.esquema, catalog = "projeto")
 public class Empresa extends Entidade {
 
 	private static final long serialVersionUID = -9165454169466824008L;
-	public final static String esquema = "maisqpedido";
+	public final static String esquema = "projeto";
 	public final static String nomeTabela = "empresa";
 
 	@Id
 	@Column(name = "cod_empresa", nullable = false)
-	@SequenceGenerator(name = "cod_empresa_seq", sequenceName = "maisqpedido.empresa_cod_empresa_seq", allocationSize = 1)
+	@SequenceGenerator(name = "cod_empresa_seq", sequenceName = "projeto.empresa_cod_empresa_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cod_empresa_seq")
 	private Integer codigo;
 

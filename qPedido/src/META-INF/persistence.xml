@@ -10,9 +10,9 @@
 		<properties>
 			<!--<property name="hibernate.connection.datasource" value="java:/comp/env/jdbc/postgresapp" />-->
 			 <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://45.55.72.44:5432/maisqpedido" />
-			<property name="javax.persistence.jdbc.user" value="maisqpedido" />
-			<property name="javax.persistence.jdbc.password" value="181159asd" /> 
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://162.243.113.238:5432/projeto" />
+			<property name="javax.persistence.jdbc.user" value="projeto" />
+			<property name="javax.persistence.jdbc.password" value="joro01" /> 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
 			<property name="hibernate.show_sql" value="false" />
 			<property name="hibernate.format_sql" value="true" />

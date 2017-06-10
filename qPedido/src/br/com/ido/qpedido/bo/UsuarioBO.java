@@ -45,5 +45,26 @@ public class UsuarioBO extends BaseBO {
 			emUtil.closeEntityManager(em);
 		}
 	}
+	
+	public Usuario gravarUsuarioApp(Usuario usuario) throws ExcecaoNegocio{
+		EntityManager em = emUtil.getEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			if(!transaction.isActive())
+				transaction.begin();
+			
+			IUsuarioDAO usuarioDAO = fabricaDAO.getPostgresUsuarioDAO();
+			Usuario result = usuarioDAO.save(usuario, em);
+			emUtil.commitTransaction(transaction);
+			return result;
+
+		}catch(Exception e){
+			emUtil.rollbackTransaction(transaction);
+			e.printStackTrace();
+			throw new ExcecaoNegocio("Falha ao tentar gravar usuário.", e);
+		}finally {
+			emUtil.closeEntityManager(em);
+		}
+	}
 
 }

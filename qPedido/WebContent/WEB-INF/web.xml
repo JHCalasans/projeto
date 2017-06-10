@@ -50,10 +50,24 @@
     <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.ido</url-pattern>
   </servlet-mapping>
+    <servlet>
+        <servlet-name>Web Service</servlet-name>
+        <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>br.com.ido.qpedido.servicos</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+   <servlet-mapping>
+        <servlet-name>Web Service</servlet-name>
+        <url-pattern>/ws/*</url-pattern>
+    </servlet-mapping>
   <session-config>
     <session-timeout>20</session-timeout>
   </session-config>

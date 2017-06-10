@@ -7,6 +7,7 @@ import br.com.ido.qpedido.dao.IEmpresaDAO;
 import br.com.ido.qpedido.dao.IEnderecoEmpresaDAO;
 import br.com.ido.qpedido.dao.ITipoPagamentoDAO;
 import br.com.ido.qpedido.dao.ITipoPagamentoEnderecoEmpresaDAO;
+import br.com.ido.qpedido.dao.IUsuarioDAO;
 
 final class PostgresFabricaDAO extends FabricaDAO {
 
@@ -24,6 +25,7 @@ final class PostgresFabricaDAO extends FabricaDAO {
 	private static PostgresTipoPagamentoDAOImpl postgresTipoPagamentoDAOImpl;
 	private static PostgresEnderecoEmpresaDAOImpl postgresEnderecoEmpresaDAOImpl;
 	private static PostgresEmpresaDAOImpl postgresEmpresaDAOImpl;
+	private static PostgresUsuarioDAOImpl postgresUsuarioDAOImpl;
 
 	private PostgresFabricaDAO() {
 
@@ -74,5 +76,12 @@ final class PostgresFabricaDAO extends FabricaDAO {
 			postgresEmpresaDAOImpl = new PostgresEmpresaDAOImpl();
 		}
 		return postgresEmpresaDAOImpl;
+	}	
+
+	public IUsuarioDAO getPostgresUsuarioDAO() {
+		if (postgresUsuarioDAOImpl == null) {
+			postgresUsuarioDAOImpl = new PostgresUsuarioDAOImpl();
+		}
+		return postgresUsuarioDAOImpl;
 	}
 }

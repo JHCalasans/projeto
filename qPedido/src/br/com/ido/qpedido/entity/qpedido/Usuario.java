@@ -13,11 +13,13 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.ido.dao.Entidade;
 
 @Entity
 @Table(name = Usuario.nomeTabela, schema = Usuario.esquema, catalog = "projeto")
+@XmlRootElement
 public class Usuario extends Entidade{
 
 	

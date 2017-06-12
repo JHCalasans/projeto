@@ -38,10 +38,10 @@ public class Usuario extends Entidade{
 	@JoinColumn(name = "nome", nullable = false)
 	private String nome;
 
-	@Column(name = "telefone", nullable = true, length = 50)
+	@Column(name = "telefone", nullable = false, length = 50)
 	private String telefone;
 
-	@Column(name = "email", nullable = false, length = 50)
+	@Column(name = "email", nullable = true, length = 50)
 	private String email;
 
 	@Column(name = "senha", nullable = false)
@@ -59,7 +59,7 @@ public class Usuario extends Entidade{
 	@Column(name = "dt_nascimento", nullable = true)
 	private Date dataNascimento;
 	
-	@Lob
+	
 	@Column(name = "img_usuario", length = 2 * 1024 * 1024, nullable = true)
 	private byte[] imgUsuario;
 

@@ -3,6 +3,7 @@ package br.com.ido.qpedido.util;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.security.MessageDigest;
 import java.text.DecimalFormat;
 import java.text.Normalizer;
 import java.text.SimpleDateFormat;
@@ -201,5 +202,23 @@ public final class FuncoesUtil {
 		result.append(DF_NUM_OFICIO.format(numeroOficio)).append("/")
 				.append(anoOficio).append("/RPV");
 		return result.toString();
+	}
+	
+	public static String criptografarSenha(String senha) throws Exception{
+		MessageDigest algorithm;
+		try {
+			algorithm = MessageDigest.getInstance("SHA-256");
+			byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+			StringBuilder hexString = new StringBuilder();
+			for (byte b : messageDigest) {
+			  hexString.append(String.format("%02X", 0xFF & b));
+			}
+			String retorno = hexString.toString();
+			return retorno;
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Erro ao processar senha");
+		}
+		
 	}
 }

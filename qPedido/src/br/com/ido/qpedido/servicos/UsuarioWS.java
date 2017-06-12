@@ -2,6 +2,7 @@ package br.com.ido.qpedido.servicos;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -30,8 +31,23 @@ public class UsuarioWS {
 
   		} catch (Exception e) {
   			e.printStackTrace();
+  			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao buscar usuário").build();
   		}
-  		return Response.status(Status.INTERNAL_SERVER_ERROR).build();
+  		
+
+  	}
+    
+    @POST
+  	public Response gravarUsuarioApp(Usuario usuario) {
+  		try {
+  			 usuario = UsuarioBO.getInstance().gravarUsuarioApp(usuario);
+  			return Response.status(Status.OK).entity(usuario).build();
+
+  		} catch (Exception e) {
+  			e.printStackTrace();
+  			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao gravar usuário").build();
+  		}
+  		
 
   	}
 

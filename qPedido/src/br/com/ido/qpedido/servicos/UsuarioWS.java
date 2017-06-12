@@ -31,7 +31,7 @@ public class UsuarioWS {
 
   		} catch (Exception e) {
   			e.printStackTrace();
-  			return Response.status(Status.OK).entity(e.getMessage()).build();
+  			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao buscar usuário").build();
   		}
   		
 
@@ -45,7 +45,7 @@ public class UsuarioWS {
 
   		} catch (Exception e) {
   			e.printStackTrace();
-  			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+  			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao gravar usuário").build();
   		}
   		
 

@@ -14,5 +14,7 @@ public interface IEnderecoEmpresaDAO extends GenericDAO<EnderecoEmpresa, Integer
 	static CriterioOrdenacao BY_CODIGO_ASC = CriterioOrdenacao.asc("codigo");
 
 	public List<EnderecoEmpresa> obterEnderecosFiliais(EntityManager em) throws ExcecaoBanco;
+	
+	public List<EnderecoEmpresa> obterporSigla(String sigla,EntityManager em) throws ExcecaoBanco;
 
 }

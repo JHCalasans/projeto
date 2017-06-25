@@ -2,6 +2,7 @@ package br.com.ido.qpedido.entity.qpedido;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,13 +13,18 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import br.com.ido.dao.Entidade;
 
 @Entity
 @Table(name = EnderecoEmpresa.nomeTabela, schema = EnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "EnderecoEmpresa.obterEnderecoFiliais", query = "select e from EnderecoEmpresa e"
-				+ " where e.empresa.codigo = :codEmpresa and e.filial = true")
+				+ " where e.empresa.codigo = :codEmpresa and e.filial = true"),
+		@NamedQuery(name = "EnderecoEmpresa.obterPorEstado", query = "select e from EnderecoEmpresa e join fetch e.empresa ep"
+				+ " where e.estado = :sigla"),
 
 })
 public class EnderecoEmpresa extends Entidade {
@@ -33,7 +39,7 @@ public class EnderecoEmpresa extends Entidade {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "endereco_empresa_cod_endereco_empresa_seq")
 	private Integer codigo;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name = "cod_empresa", nullable = false, referencedColumnName = "cod_empresa")
 	private Empresa empresa;
 

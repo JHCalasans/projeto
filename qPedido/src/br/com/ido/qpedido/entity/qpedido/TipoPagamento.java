@@ -11,6 +11,8 @@ import javax.persistence.Table;
 
 import br.com.ido.dao.Entidade;
 
+
+
 @Entity
 @Table(name = TipoPagamento.nomeTabela, schema = TipoPagamento.esquema, catalog = "projeto")
 @NamedQueries(value = {

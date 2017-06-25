@@ -36,6 +36,8 @@ public class EntityManagerUtil {
 	private static ThreadLocal<MyEntityManager> threadEntityManager = new ThreadLocal<MyEntityManager>();
 
 	private final String persistenceUnitName;
+	
+	private final String persistenceUnitNameFixo = "postgresqlPU";
 
 	public static final String MSG_ERRO_GERAL = "Erro indeterminado na camada de persistência";
 

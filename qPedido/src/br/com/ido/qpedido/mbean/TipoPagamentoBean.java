@@ -1,4 +1,4 @@
-package br.com.ido.qpedido.mbean;
+/*package br.com.ido.qpedido.mbean;
 
 import java.util.List;
 
@@ -165,4 +165,4 @@ public class TipoPagamentoBean extends SimpleController {
 	public String actionVoltar() {
 		return "consultarTipoPagamento.ido?faces-redirect=true";
 	}
-}
+}*/

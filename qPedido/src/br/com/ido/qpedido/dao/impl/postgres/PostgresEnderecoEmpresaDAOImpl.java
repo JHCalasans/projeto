@@ -27,4 +27,12 @@ public class PostgresEnderecoEmpresaDAOImpl extends GenericDAOImpl<EnderecoEmpre
 				Collections.<String, Object>emptyMap(), em);
 	}
 
+	@Override
+	public List<EnderecoEmpresa> obterporSigla(String sigla, EntityManager em) throws ExcecaoBanco {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("sigla", sigla);
+		return findByNamedQueryAndNamedParams("EnderecoEmpresa.obterPorEstado", params, em);
+
+	}
+
 }

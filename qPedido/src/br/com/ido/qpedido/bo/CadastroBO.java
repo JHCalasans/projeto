@@ -122,7 +122,7 @@ public class CadastroBO extends BaseBO {
 			emUtil.closeEntityManager(em);
 		}
 	}
-
+/*
 	public TipoPagamento obterTipoPagamento(Integer codigoTipo) throws ExcecaoNegocio {
 		EntityManager em = emUtil.getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
@@ -155,6 +155,6 @@ public class CadastroBO extends BaseBO {
 		} finally {
 			emUtil.closeEntityManager(em);
 		}
-	}
+	}*/
 
 }

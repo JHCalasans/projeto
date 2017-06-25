@@ -104,6 +104,23 @@ public class EmpresaBO extends BaseBO {
 			emUtil.closeEntityManager(em);
 		}
 	}
+	
+	public List<EnderecoEmpresa> obterEnderecoEmpresaPorSigla(String sigla) throws ExcecaoNegocio {
+		EntityManager em = emUtil.getEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			IEnderecoEmpresaDAO enderecoEmpresaDAO = fabricaDAO.getPostgresEnderecoEmpresaDAO();
+			List<EnderecoEmpresa> result = enderecoEmpresaDAO.obterporSigla(sigla, em);		
+			emUtil.commitTransaction(transaction);
+			return result;
+		} catch (ExcecaoBanco e) {
+			emUtil.rollbackTransaction(transaction);
+			throw new ExcecaoNegocio("Falha ao tentar obter endereço da empresa pela sigla.", e);
+		} finally {
+			emUtil.closeEntityManager(em);
+		}
+	}
 
 	public void excluirFilialEmpresa(Integer codigoEnderecoEmpresa) throws ExcecaoNegocio {
 		EntityManager em = emUtil.getEntityManager();

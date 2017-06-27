@@ -17,4 +17,6 @@ public interface IEnderecoEmpresaDAO extends GenericDAO<EnderecoEmpresa, Integer
 	
 	public List<EnderecoEmpresa> obterporSigla(String sigla,EntityManager em) throws ExcecaoBanco;
 
+	public List<EnderecoEmpresa> obterporDistancia(double latitude, double longitude,EntityManager em) throws ExcecaoBanco;
+
 }

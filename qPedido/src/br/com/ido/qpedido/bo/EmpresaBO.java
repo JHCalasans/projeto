@@ -121,6 +121,23 @@ public class EmpresaBO extends BaseBO {
 			emUtil.closeEntityManager(em);
 		}
 	}
+	
+	public List<EnderecoEmpresa> obterEnderecoEmpresaPorDistancia(double latitude, double longitude) throws ExcecaoNegocio {
+		EntityManager em = emUtil.getEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			IEnderecoEmpresaDAO enderecoEmpresaDAO = fabricaDAO.getPostgresEnderecoEmpresaDAO();
+			List<EnderecoEmpresa> result = enderecoEmpresaDAO.obterporDistancia(latitude, longitude, em);
+			emUtil.commitTransaction(transaction);
+			return result;
+		} catch (ExcecaoBanco e) {
+			emUtil.rollbackTransaction(transaction);
+			throw new ExcecaoNegocio("Falha ao tentar obter endereço da empresa pela distância.", e);
+		} finally {
+			emUtil.closeEntityManager(em);
+		}
+	}
 
 	public void excluirFilialEmpresa(Integer codigoEnderecoEmpresa) throws ExcecaoNegocio {
 		EntityManager em = emUtil.getEntityManager();

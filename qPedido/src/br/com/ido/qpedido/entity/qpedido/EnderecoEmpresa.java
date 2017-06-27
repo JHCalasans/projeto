@@ -25,7 +25,8 @@ import br.com.ido.dao.Entidade;
 				+ " where e.empresa.codigo = :codEmpresa and e.filial = true"),
 		@NamedQuery(name = "EnderecoEmpresa.obterPorEstado", query = "select e from EnderecoEmpresa e join fetch e.empresa ep"
 				+ " where e.estado = :sigla"),
-
+		@NamedQuery(name = "EnderecoEmpresa.obterPorDistancia", query = "select e from EnderecoEmpresa e join fetch e.empresa ep"
+				+ " where e.latitude >= (:latitude - 0.2) and e.latitude <= (:latitude + 0.2) and e.longitude >= (:longitude - 0.2)  and e.longitude <= (:longitude + 0.2)")
 })
 public class EnderecoEmpresa extends Entidade {
 
@@ -72,6 +73,12 @@ public class EnderecoEmpresa extends Entidade {
 
 	@Column(name = "descricao", nullable = true, length = 100)
 	private String descricao;
+	
+	@Column(name = "latitude", nullable = true)
+	private double latitude;
+	
+	@Column(name = "longitude", nullable = true)
+	private double longitude;
 
 	public Integer getCodigo() {
 		return codigo;
@@ -172,6 +179,22 @@ public class EnderecoEmpresa extends Entidade {
 	@Override
 	public Integer getIdentificador() {
 		return codigo;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
 	}
 
 }

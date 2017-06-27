@@ -35,4 +35,13 @@ public class PostgresEnderecoEmpresaDAOImpl extends GenericDAOImpl<EnderecoEmpre
 
 	}
 
+	@Override
+	public List<EnderecoEmpresa> obterporDistancia(double latitude, double longitude, EntityManager em)
+			throws ExcecaoBanco {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("latitude", latitude);
+		params.put("longitude", longitude);
+		return findByNamedQueryAndNamedParams("EnderecoEmpresa.obterPorDistancia", params, em);
+	}
+
 }

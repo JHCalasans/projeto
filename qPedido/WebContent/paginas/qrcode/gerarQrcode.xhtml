@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</h:head>
+<ui:composition template="/paginas/masterPage.xhtml">
+	<ui:param name="headerConteudo" value="#{bundle.qrcode_Titulo}" />
+	<ui:param name="bean" value="#{qrcodeBean}" />
+	<ui:param name="actionSalvar" value="actionSalvar" />
+	<ui:define name="conteudo">
+
+		<h:form id="qrcodeForm" prependId="false">
+			
+			<div align="center">
+			<p:panel
+				style="width:100%; text-align: center; border: none; background: transparent !important; ">
+				<br></br>
+				<div style="text-align: left">
+					<p:growl globalOnly="true" id="grow" />
+					<p:messages closable="true" globalOnly="true" id="msgs" />
+				</div>
+				<p:dataGrid var="sistema" value="#{qrcodeBean}"
+					columns="6" layout="grid" paginator="false" id="sistemas"
+					emptyMessage="Nenhum sistema encontrado"
+					style="top: 200px; width:100%;border:0px!important; background-color: transparent; margin-top: 40px;">
+
+					<p:commandLink id="clAcessar" immediate="true" process="@this"
+						style="border:0px; width: 200px" ajax="false"
+						update="msgs,grow"
+						action="#{sistemaTJSEBean.acessarSistema}">
+						<p:panelGrid columns="1" layout="grid"
+							styleClass="ui-panelgrid-blank"
+							style="text-align:center;border:0px;">
+							<f:facet name="header">
+								<p:graphicImage value="#{sistema.iconeStream}"
+									rendered="#{sistema.iconeStream != null}" cache="false"
+									stream="false" />
+								<h:graphicImage rendered="#{sistema.iconeStream == null}"
+									value="/resources/semsistema.png" />
+							</f:facet>
+							<h2 style="font-size: 18px">#{sistema.descricao}</h2>
+						</p:panelGrid>
+						<f:setPropertyActionListener target="#{sistemaTJSEBean.sistema}"
+							value="#{sistema}" />
+					</p:commandLink>
+
+				</p:dataGrid>
+			</p:panel>
+			</div>
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>
+</html>
+

@@ -5,9 +5,13 @@ import org.apache.log4j.Logger;
 import br.com.ido.qpedido.dao.FabricaDAO;
 import br.com.ido.qpedido.dao.IEmpresaDAO;
 import br.com.ido.qpedido.dao.IEnderecoEmpresaDAO;
+import br.com.ido.qpedido.dao.IMesaEnderecoEmpresaDAO;
+import br.com.ido.qpedido.dao.IPerfilDAO;
 import br.com.ido.qpedido.dao.ITipoPagamentoDAO;
 import br.com.ido.qpedido.dao.ITipoPagamentoEnderecoEmpresaDAO;
 import br.com.ido.qpedido.dao.IUsuarioDAO;
+import br.com.ido.qpedido.dao.IUsuarioEnderecoEmpresaDAO;
+import br.com.ido.qpedido.dao.IUsuarioPerfilDAO;
 
 final class PostgresFabricaDAO extends FabricaDAO {
 
@@ -26,6 +30,10 @@ final class PostgresFabricaDAO extends FabricaDAO {
 	private static PostgresEnderecoEmpresaDAOImpl postgresEnderecoEmpresaDAOImpl;
 	private static PostgresEmpresaDAOImpl postgresEmpresaDAOImpl;
 	private static PostgresUsuarioDAOImpl postgresUsuarioDAOImpl;
+	private static PostgresMesaEnderecoEmpresaDAOImpl postgresMesaEnderecoEmpresaDAOImpl;
+	private static PostgresPerfilDAOImpl postgresPerfilDAOImpl;
+	private static PostgresUsuarioPerfilDAOImpl postgresUsuarioPerfilDAOImpl;
+	private static PostgresUsuarioEnderecoEmpresaDAOImpl postgresUsuarioEnderecoEmpresaDAOImpl;
 
 	private PostgresFabricaDAO() {
 
@@ -83,5 +91,33 @@ final class PostgresFabricaDAO extends FabricaDAO {
 			postgresUsuarioDAOImpl = new PostgresUsuarioDAOImpl();
 		}
 		return postgresUsuarioDAOImpl;
+	}
+	
+	public IMesaEnderecoEmpresaDAO getPostgresMesaEnderecoEmpresaDAO() {
+		if (postgresMesaEnderecoEmpresaDAOImpl == null) {
+			postgresMesaEnderecoEmpresaDAOImpl = new PostgresMesaEnderecoEmpresaDAOImpl();
+		}
+		return postgresMesaEnderecoEmpresaDAOImpl;
+	}
+	
+	public IPerfilDAO getPostgresPerfilDAO() {
+		if (postgresPerfilDAOImpl == null) {
+			postgresPerfilDAOImpl = new PostgresPerfilDAOImpl();
+		}
+		return postgresPerfilDAOImpl;
+	}
+	
+	public IUsuarioPerfilDAO getPostgresUsuarioPerfilDAO() {
+		if (postgresUsuarioPerfilDAOImpl == null) {
+			postgresUsuarioPerfilDAOImpl = new PostgresUsuarioPerfilDAOImpl();
+		}
+		return postgresUsuarioPerfilDAOImpl;
+	}
+	
+	public IUsuarioEnderecoEmpresaDAO getPostgresUsuarioEnderecoEmpresaDAO() {
+		if (postgresUsuarioEnderecoEmpresaDAOImpl == null) {
+			postgresUsuarioEnderecoEmpresaDAOImpl = new PostgresUsuarioEnderecoEmpresaDAOImpl();
+		}
+		return postgresUsuarioEnderecoEmpresaDAOImpl;
 	}
 }

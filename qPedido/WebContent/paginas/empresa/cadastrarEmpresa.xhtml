@@ -17,9 +17,9 @@
 	<ui:param name="actionSalvar" value="actionSalvar" />
 	<ui:define name="conteudo">
 		<h:panelGrid id="grid" columns="2" layout="block">
-			<p:outputLabel value="#{bundle.empresaNome}:" for="itNome"
+			<p:outputLabel value="#{bundle.empresaNome}:" 
 				styleClass="OutputLabelCampo" style="width:30px" />
-			<p:inputText id="itNome" required="true"
+		<!-- 	<p:inputText id="itNome" required="true"
 				requiredMessage="#{bundle.campoObrigatorio}"
 				value="#{empresaBean.enderecoEmpresa.empresa.nome}" maxlength="100"
 				size="50" />
@@ -43,7 +43,7 @@
 			<p:selectBooleanButton id="sbbAtivo" onLabel="Ativo" required="true"
 				offLabel="Inativo" onIcon="ui-icon-check" offIcon="ui-icon-close"
 				style="width:60px"
-				value="#{empresaBean.enderecoEmpresa.empresa.ativo}" />
+				value="#{empresaBean.enderecoEmpresa.empresa.ativo}" /> -->
 
 		</h:panelGrid>
 	</ui:define>

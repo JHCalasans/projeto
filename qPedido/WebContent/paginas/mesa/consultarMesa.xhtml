@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<meta http-equiv="Cache-Control" content="no-cache" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</h:head>
+<ui:composition template="/paginas/masterPage.xhtml">
+	<ui:param name="headerConteudo" value="#{bundle.mesa_consultaTitulo}" />
+	<ui:param name="bean" value="#{mesaBean}" />
+	<ui:param name="actionSalvar" value="actionSalvar" />
+	<ui:param name="actionSalvar" value="actionSalvar" />
+	<ui:define name="conteudo">
+	
+
+				 <p:dataGrid var="mesa" value="#{mesaBean.listaMesas}"
+					columns="6" layout="grid" paginator="false" id="sistemas"
+					emptyMessage="Nenhuma mesa encontrada"
+					style="top: 200px; width:100%;border:0px!important; background-color: transparent; margin-top: 40px;">
+
+					<p:commandLink id="clEditar" immediate="true" process="@this"
+						style="border:5px; width: 200px" ajax="false"
+						update="msgs,grow">
+						<p:panelGrid columns="1" layout="grid"
+							styleClass="ui-panelgrid-blank"
+							style="text-align:center;border:0px;">
+						 	<f:facet name="header">
+							<!--	<p:graphicImage value="#{sistema.iconeStream}"
+									rendered="#{sistema.iconeStream != null}" cache="false"
+									stream="false" />-->
+								<h:graphicImage 
+									value="/resources/mesa.png" />
+							</f:facet> 
+							<h2 style="font-size: 18px">MESA #{mesa.numero}</h2>
+						</p:panelGrid>
+						<f:setPropertyActionListener target="#{mesaBean.mesa}"
+							value="#{mesa}" />
+					</p:commandLink>
+
+				</p:dataGrid> 
+
+
+
+
+	</ui:define>
+</ui:composition>
+</html>
+

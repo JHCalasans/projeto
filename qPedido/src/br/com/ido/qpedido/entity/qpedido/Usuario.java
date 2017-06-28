@@ -49,6 +49,9 @@ public class Usuario extends Entidade{
 	
 	@Column(name = "cpf", nullable = true)
 	private String cpf;
+	
+	@Column(name = "login", nullable = true)
+	private String login;
 
 	@Column(name = "flg_ativo", nullable = false)
 	private boolean ativo;
@@ -167,6 +170,16 @@ public class Usuario extends Entidade{
 
 	public void setImgUsuario(byte[] imgUsuario) {
 		this.imgUsuario = imgUsuario;
+	}
+
+
+	public String getLogin() {
+		return login;
+	}
+
+
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	
 	

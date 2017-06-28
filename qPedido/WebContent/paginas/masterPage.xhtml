@@ -70,14 +70,15 @@
 				<p:menubar>
 					<p:submenu label="#{bundle.menuCadastro}" icon="ui-icon-document">
 						<p:menuitem value="#{bundle.menuCadastroEmpresa}" ajax="true"
-							action="/paginas/empresa/cadastrarEmpresa.ido?faces-redirect=true"
+							action="/paginas/empresa/cadastrarEmpresa.proj?faces-redirect=true"
 							immediate="true" />
 						<p:menuitem value="#{bundle.menuCadastroTipoPag}" ajax="true"
-							action="/paginas/tipoPagamento/consultarTipoPagamento.ido?faces-redirect=true"
+							action="/paginas/tipoPagamento/consultarTipoPagamento.proj?faces-redirect=true"
 							immediate="true" />
 					</p:submenu>
 					<p:menuitem value="Movimentação" icon="ui-icon-pencil" />
-					<p:menuitem value="Consultas" icon="ui-icon-search" />
+					<p:menuitem value="Mesas" icon="ui-icon-search" action="/paginas/mesa/consultarMesa.proj?faces-redirect=true"
+							immediate="true" />
 					<p:menuitem value="Relatórios" icon="ui-icon-print" />
 					<p:menuitem value="Sair" icon="ui-icon-close" />
 				</p:menubar>
@@ -88,7 +89,7 @@
 		<p:layoutUnit position="south" header="Sistema de controle de pedidos"
 			style="text-align: center;">
 			<h:outputText
-				value="® 2017 - Todos os direitos reservados à Ido Tecnologia" />
+				value="® 2017 - Todos os direitos reservados" />
 		</p:layoutUnit>
 
 

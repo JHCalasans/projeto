@@ -30,7 +30,7 @@ public class EmpresaBean extends SimpleController {
 			if (getFacesContext().isPostback()) {
 				return;
 			}
-			enderecoEmpresa = EmpresaBO.getInstance().obterEnderecoEmpresa(FacesUtil.getCodEnderecoEmpresa());
+			//enderecoEmpresa = EmpresaBO.getInstance().obterEnderecoEmpresa(FacesUtil.getCodEnderecoEmpresa());
 		} catch (Exception e) {
 			ExcecoesUtil.TratarExcecao(e);
 		}

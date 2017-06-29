@@ -32,7 +32,7 @@ public class UtilDownload {
 			ExcecaoNegocio {
 		if (bytes == null) {
 			throw new ExcecaoNegocio("O arquivo " + nomeDoArquivo
-					+ " est√° vazio.");
+					+ " est· vazio.");
 		}
 
 		FacesContext facesContext = FacesContext.getCurrentInstance();

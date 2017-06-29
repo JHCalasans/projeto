@@ -39,12 +39,15 @@ public class MesaEnderecoEmpresa extends Entidade {
 	@Column(name = "nr_mesa", nullable = false, length = 50)
 	private Integer numero;
 
-	@Lob
-	@Column(name = "qr_code", length = 2 * 1024 * 1024)
-	private byte[] qrcode;
+	
+	/*@Column(name = "qr_code", length = 2 * 1024 * 1024)
+	private byte[] qrcode;*/
 
 	@Column(name = "flg_ocupada", nullable = false)
 	private boolean ocupada;
+	
+	@Column(name = "cadeiras", nullable = false)
+	private Integer qtdCadeiras;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_endereco_empresa", nullable = false, referencedColumnName = "cod_endereco_empresa")
@@ -71,13 +74,13 @@ public class MesaEnderecoEmpresa extends Entidade {
 		this.numero = numero;
 	}
 
-	public byte[] getQrcode() {
+	/*public byte[] getQrcode() {
 		return qrcode;
 	}
 
 	public void setQrcode(byte[] qrcode) {
 		this.qrcode = qrcode;
-	}
+	}*/
 
 	public boolean isOcupada() {
 		return ocupada;
@@ -93,6 +96,14 @@ public class MesaEnderecoEmpresa extends Entidade {
 
 	public void setEnderecoEmpresa(EnderecoEmpresa enderecoEmpresa) {
 		this.enderecoEmpresa = enderecoEmpresa;
+	}
+
+	public Integer getQtdCadeiras() {
+		return qtdCadeiras;
+	}
+
+	public void setQtdCadeiras(Integer qtdCadeiras) {
+		this.qtdCadeiras = qtdCadeiras;
 	}
 
 }

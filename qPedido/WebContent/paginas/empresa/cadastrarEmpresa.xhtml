@@ -15,6 +15,9 @@
 	<ui:param name="headerConteudo" value="#{bundle.empresaCadastroTitulo}" />
 	<ui:param name="bean" value="#{empresaBean}" />
 	<ui:param name="actionSalvar" value="actionSalvar" />
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{homeBean.verificaSessaoValida}" />
+	</f:metadata>
 	<ui:define name="conteudo">
 		<h:panelGrid id="grid" columns="2" layout="block">
 			<p:outputLabel value="#{bundle.empresaNome}:" 

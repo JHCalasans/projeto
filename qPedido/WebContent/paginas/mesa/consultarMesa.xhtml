@@ -14,8 +14,12 @@
 <ui:composition template="/paginas/masterPage.xhtml">
 	<ui:param name="headerConteudo" value="#{bundle.mesa_consultaTitulo}" />
 	<ui:param name="bean" value="#{mesaBean}" />
-	<ui:param name="actionSalvar" value="actionSalvar" />
-	<ui:param name="actionSalvar" value="actionSalvar" />
+	<ui:param name="mostraSalvar" value="N" />
+	<ui:param name="actionNovo" value="actionNovo" />
+	<ui:param name="actionAlterar" value="actionAlterar" />
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{mesaBean.verificaSessaoValida}" />
+	</f:metadata>
 	<ui:define name="conteudo">
 	
 
@@ -24,9 +28,9 @@
 					emptyMessage="Nenhuma mesa encontrada"
 					style="top: 200px; width:100%;border:0px!important; background-color: transparent; margin-top: 40px;">
 
-					<p:commandLink id="clEditar" immediate="true" process="@this"
-						style="border:5px; width: 200px" ajax="false"
-						update="msgs,grow">
+					<h:link  id="clEditar" immediate="true" process="@this"
+						style="border:5px; width: 200px" ajax="false" outcome="alterarMesa.proj"
+						update="msgs,grow" >
 						<p:panelGrid columns="1" layout="grid"
 							styleClass="ui-panelgrid-blank"
 							style="text-align:center;border:0px;">
@@ -34,14 +38,14 @@
 							<!--	<p:graphicImage value="#{sistema.iconeStream}"
 									rendered="#{sistema.iconeStream != null}" cache="false"
 									stream="false" />-->
-								<h:graphicImage 
+								<h:graphicImage  width="55%"
 									value="/resources/mesa.png" />
 							</f:facet> 
-							<h2 style="font-size: 18px">MESA #{mesa.numero}</h2>
+							<h2 style="font-size: 140%">MESA #{mesa.numero}</h2>
 						</p:panelGrid>
-						<f:setPropertyActionListener target="#{mesaBean.mesa}"
-							value="#{mesa}" />
-					</p:commandLink>
+						<f:param name="codMesa" value="#{mesa.codigo}" />
+					
+					</h:link>
 
 				</p:dataGrid> 
 

@@ -65,22 +65,34 @@
 	<p:layout fullPage="true">
 
 		<p:layoutUnit position="north" header="+QuePedido"
-			style="text-align: center; font-size: 14px;z-index: 1;">
+			styleClass="cabecalhoMenu"
+			style="text-align: center !important; font-size: 19px !important;z-index: 1;">
 			<h:form id="formMenuNorth" enctype="multipart/form-data">
 				<p:menubar>
-					<p:submenu label="#{bundle.menuCadastro}" icon="ui-icon-document">
-						<p:menuitem value="#{bundle.menuCadastroEmpresa}" ajax="true"
-							action="/paginas/empresa/cadastrarEmpresa.proj?faces-redirect=true"
-							immediate="true" />
-						<p:menuitem value="#{bundle.menuCadastroTipoPag}" ajax="true"
-							action="/paginas/tipoPagamento/consultarTipoPagamento.proj?faces-redirect=true"
-							immediate="true" />
-					</p:submenu>
-					<p:menuitem value="Movimentação" icon="ui-icon-pencil" />
-					<p:menuitem value="Mesas" icon="ui-icon-search" action="/paginas/mesa/consultarMesa.proj?faces-redirect=true"
-							immediate="true" />
-					<p:menuitem value="Relatórios" icon="ui-icon-print" />
-					<p:menuitem value="Sair" icon="ui-icon-close" />
+
+
+
+					<p:menuitem value="#{bundle.menuCadastroEmpresa}" ajax="true"
+						styleClass="cabecalhoMenu"
+						action="/paginas/empresa/cadastrarEmpresa.proj?faces-redirect=true"
+						immediate="true" />
+					<p:menuitem value="#{bundle.menuCadastroTipoPag}" ajax="true"
+						styleClass="cabecalhoMenu"
+						action="/paginas/tipoPagamento/consultarTipoPagamento.proj?faces-redirect=true"
+						immediate="true" />
+					<p:menuitem value="Movimentação" styleClass="cabecalhoMenu" />
+					<p:menuitem value="Mesas"
+						action="/paginas/mesa/consultarMesa.proj?faces-redirect=true"
+						immediate="true" styleClass="cabecalhoMenu" />
+					<p:menuitem value="Relatórios" styleClass="cabecalhoMenu" />
+
+			
+
+					<f:facet name="options">				      
+
+						<p:commandButton  value="Logout"	icon="ui-icon-extlink" styleClass="cabecalhoMenuBotao" 
+						/>
+					</f:facet>
 				</p:menubar>
 			</h:form>
 
@@ -88,8 +100,7 @@
 
 		<p:layoutUnit position="south" header="Sistema de controle de pedidos"
 			style="text-align: center;">
-			<h:outputText
-				value="® 2017 - Todos os direitos reservados" />
+			<h:outputText value="® 2017 - Todos os direitos reservados" />
 		</p:layoutUnit>
 
 
@@ -101,9 +112,9 @@
 						<p:menuitem value="#{bundle.novoRegistro}" icon="ui-icon-document"
 							action="#{bean[actionNovo]}" disabled="#{empty actionNovo}" />
 						<p:menuitem value="#{bundle.salvarRegistro}" icon="ui-icon-disk"
-							disabled="#{empty actionSalvar}"
+							disabled="#{empty actionSalvar}" style="display: none;"
 							onclick="$('#btSalvarSecret').click();" />
-						<p:menuitem value="#{bundle.alterarRegistro}"
+						<p:menuitem value="#{bundle.alterarRegistro}" style="display: none;"
 							disabled="#{empty actionAlterar}" icon="ui-icon-refresh"
 							onclick="$('#btAlterarSecret').click();"
 							process="@this,:formCenter" />
@@ -126,17 +137,19 @@
 
 		<p:layoutUnit id="centerLayout" header="#{headerConteudo}"
 			position="center">
+
 			<h:form id="formCenter" prependId="false">
-				<div>
+				<div align="center">
 					<p:panel id="conteudo">
 						<div class="clear" id="div_pre_conteudo">
-							<p:messages closable="true" globalOnly="true" id="msgs" />
+							<p:messages closable="true" id="msgs" />
 						</div>
 						<ui:insert name="conteudo" />
 						<div class="clear" id="div_pos_conteudo" />
 						<p:commandButton id="btSalvarSecret" widgetVar="btSalvarSecret"
-							action="#{bean[actionSalvar]}" style="display: none;"
-							type="Secret" update="conteudo" />
+							action="#{bean[actionSalvar]}" style="margin-top:15px"
+							rendered="#{mostraSalvar eq 'S'}" type="Secret"
+							update="conteudo, msgs" value="#{bundle.salvarRegistro}" />
 						<p:commandButton id="btAlterarSecret" widgetVar="btAlterarSecret"
 							action="#{bean[actionAlterar]}" style="display: none;"
 							type="Secret" update="conteudo" />

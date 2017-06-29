@@ -18,6 +18,9 @@
 	<ui:param name="actionSalvar" value="actionSalvar" />
 	<ui:param name="actionNovo" value="actionNovo" />
 	<ui:param name="actionVoltar" value="actionVoltar" />
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{homeBean.verificaSessaoValida}" />
+	</f:metadata>
 	<ui:define name="conteudo">
 		<h:panelGrid id="grid" columns="2" layout="block">
 			<p:outputLabel value="#{bundle.tipoPagamentoTipoPag}:"

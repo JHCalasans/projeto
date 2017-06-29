@@ -4,9 +4,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core">
 
-<f:metadata>
+<!-- <f:metadata>
 	<f:event type="preRenderView" listener="#{usuarioLogadoBean.sair}" />
-</f:metadata>
+</f:metadata> -->
 
 <ui:composition template="/paginas/masterPage.xhtml">
 	<ui:param name="tituloPagina" value="Sessão Encerrada" />
@@ -18,7 +18,7 @@
 				<p:graphicImage id="imagem" value="/resources/atencao.jpg" />
 				<br />
 
-				<h:outputLabel value="Sessão Encerrada" styleClass="titulo" />
+				<h:outputLabel value="Sessão Encerrada" styleClass="tituloExpirada" />
 				<br />
 			</div>
 		</h:form>

@@ -14,12 +14,16 @@ import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
 import br.com.ido.qpedido.dao.FabricaDAO;
+import br.com.ido.qpedido.entity.qpedido.UsuarioEnderecoEmpresa;
+import br.com.ido.qpedido.util.FacesUtil;
+import br.com.ido.qpedido.util.Paginas;
 
 @ViewScoped
 public abstract class SimpleController implements Serializable {
@@ -32,6 +36,8 @@ public abstract class SimpleController implements Serializable {
 	private int ROWS_DATATABLE = 20;
 
 	protected Integer COD_EMPRESA = 1; // TODO: Rodrigo - Obter da sessão
+
+	private static UsuarioEnderecoEmpresa usuarioLogado;
 
 	public SimpleController() {
 		super();
@@ -144,6 +150,14 @@ public abstract class SimpleController implements Serializable {
 		return ROWS_DATATABLE;
 	}
 
+	public void verificaSessaoValida(ComponentSystemEvent event) {
+		if (!getSessionMap().containsKey("Projeto.UsuarioEnderecoEmpresa"))
+			FacesUtil.redirecionar(null, Paginas.PAG_SESSAO_ENCERRADA, true, null);
+		else
+			setUsuarioLogado((UsuarioEnderecoEmpresa) getSessionMap().get("Projeto.UsuarioEnderecoEmpresa"));
+
+	}
+
 	public abstract String actionNovo();
 
 	public abstract String actionSalvar();
@@ -151,7 +165,15 @@ public abstract class SimpleController implements Serializable {
 	public abstract String actionAlterar();
 
 	public abstract String actionExcluir();
-	
+
 	public abstract String actionVoltar();
+
+	public UsuarioEnderecoEmpresa getUsuarioLogado() {
+		return usuarioLogado;
+	}
+
+	public void setUsuarioLogado(UsuarioEnderecoEmpresa usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
 
 }

@@ -17,6 +17,9 @@
 	<ui:param name="actionNovo" value="actionNovo" />
 	<ui:param name="actionAlterar" value="actionAlterar" />
 	<ui:param name="actionExcluir" value="actionExcluir" />
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{homeBean.verificaSessaoValida}" />
+	</f:metadata>
 
 	<ui:define name="conteudo">
 		<p:dataTable id="tbTiposPagamento" var="tipoPagamento"

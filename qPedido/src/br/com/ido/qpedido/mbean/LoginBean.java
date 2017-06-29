@@ -1,13 +1,13 @@
 package br.com.ido.qpedido.mbean;
 
-import java.io.Serializable;
-
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
-import br.com.ido.qpedido.bo.UsuarioBO;
+import br.com.ido.qpedido.bo.MesaEnderecoEmpresaBO;
 import br.com.ido.qpedido.bo.UsuarioEnderecoEmpresaBO;
+import br.com.ido.qpedido.entity.qpedido.MesaEnderecoEmpresa;
 import br.com.ido.qpedido.entity.qpedido.UsuarioEnderecoEmpresa;
 import br.com.ido.qpedido.util.ExcecoesUtil;
 import br.com.ido.qpedido.util.FacesUtil;
@@ -24,6 +24,19 @@ public class LoginBean extends SimpleController {
 	private String senha;
 
 	private boolean exibeBannerMenu = true;
+	
+	
+	@PostConstruct
+	public void carregar() {
+		try {
+			if (getSessionMap().containsKey("Projeto.UsuarioEnderecoEmpresa"))
+				FacesUtil.redirecionar(null, Paginas.PAG_HOME, true, null);
+
+		} catch (Exception e) {
+			ExcecoesUtil.TratarExcecao(e);
+		}
+	}
+	
 
 	public boolean isExibeBannerMenu() {
 		return exibeBannerMenu;
@@ -48,9 +61,10 @@ public class LoginBean extends SimpleController {
 	public void logar() {
 		try {
 			UsuarioEnderecoEmpresa usuarioEnderecoEmpresa = UsuarioEnderecoEmpresaBO.getInstance().obterUsuarioEnderecoEmpresaAtivoPorLoginESenha(login, senha);
-			if(usuarioEnderecoEmpresa != null)
+			if(usuarioEnderecoEmpresa != null){
+				getSessionMap().put("Projeto.UsuarioEnderecoEmpresa", usuarioEnderecoEmpresa);	
 				FacesUtil.redirecionar(null, Paginas.PAG_HOME, true, null);
-			else
+			}else
 				addMsg(FacesMessage.SEVERITY_ERROR, "Login/Senha incorretos.");
 		} catch (Exception e) {
 			ExcecoesUtil.TratarExcecao(e);

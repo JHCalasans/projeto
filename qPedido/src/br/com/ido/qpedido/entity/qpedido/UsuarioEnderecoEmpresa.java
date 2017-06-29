@@ -21,7 +21,7 @@ import br.com.ido.dao.Entidade;
 @Entity
 @Table(name = UsuarioEnderecoEmpresa.nomeTabela, schema = UsuarioEnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
-		@NamedQuery(name = "UsuarioEnderecoEmpresa.obterPorUsuario", query = "select ue from UsuarioEnderecoEmpresa ue join fetch ue.usuario u"
+		@NamedQuery(name = "UsuarioEnderecoEmpresa.obterPorUsuario", query = "select ue from UsuarioEnderecoEmpresa ue join fetch ue.usuario u join fetch ue.enderecoEmpresa ee"
 				+ " where u.codigo = :codUsuario") })
 public class UsuarioEnderecoEmpresa extends Entidade{
 

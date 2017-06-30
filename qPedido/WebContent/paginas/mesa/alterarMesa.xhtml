@@ -15,8 +15,10 @@
 	<ui:param name="headerConteudo" value="#{bundle.mesa_alterarTitulo}" />
 	<ui:param name="bean" value="#{mesaBean}" />
 	<ui:param name="actionVoltar" value="actionVoltar" />
-	<ui:param name="actionSalvar" value="actionSalvar" />
-	<ui:param name="mostraSalvar" value="S" />
+	<ui:param name="actionAlterar" value="actionAlterar" />
+	<ui:param name="actionExcluir" value="actionExcluir" />
+	<ui:param name="actionNovo" value="actionNovo" />
+	<ui:param name="acao" value="AE" />
 	<f:metadata>
 		<f:event type="preRenderView"
 			listener="#{mesaBean.verificaSessaoValida}" />
@@ -26,10 +28,12 @@
 		<!-- 	<h:panelGrid id="grid" columns="2" layout="block" style="text-align:center;"/> -->
 
 		<h:panelGroup>
-			<h:graphicImage width="15%" value="/resources/mesa.png" />
+			<p:graphicImage width="15%" value="/resources/mesa.png" style="border-style: solid; border-width: 3px; border-color: #101466;"  />
 		</h:panelGroup>
 
 		<br />
+		
+		<p:spacer height="30" width="0"></p:spacer>
 
 		<h:panelGroup id="pngNumeroMesa">
 			<p:outputLabel value="#{bundle.mesa_numeroMesa}:" for="numeroMesa"
@@ -63,16 +67,7 @@
 			style="color:blue; text-decoration: underline;"></p:commandLink>
 		</h:panelGroup>
 
-		<h:panelGroup rendered="false">
-			<p:graphicImage width="15%" value="#{mesaBean.qrCodeImg}" />
-		</h:panelGroup>
-
 		<br />
-
-		<h:panelGroup rendered="false">
-			<p:commandButton id="btnSalvar" value="#{bundle.salvarRegistro}"
-				style="margin-top:20px;" actionListener="#{mesaBean.actionSalvar}" />
-		</h:panelGroup>
 
 
 	</ui:define>

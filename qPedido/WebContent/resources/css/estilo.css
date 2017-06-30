@@ -15,6 +15,7 @@ form span.p_like input,form span.p_like select,form span.p_like img,form span.p_
 	margin-bottom: 10px;
 }
 
+
 form p,form span.p_like,form div.p_like {
 	clear: both;
 	float: left;
@@ -93,6 +94,8 @@ ul.ui-menu-child {
 	z-index: 5000;
 }
 
+
+
 .ui-datatable .ui-row-editor .ui-icon-pencil {
     background: url('/Project/resources/edit.png');
     background-size: 16px 16px;
@@ -101,6 +104,10 @@ ul.ui-menu-child {
 .ui-datatable .ui-row-editor .ui-icon-check {
     background: url('/Project/resources/check.png');
     background-size: 16px 16px;
+}
+
+.tabela .ui-widget-content{
+	border : none !important;
 }
 
 .OutputLabelValor {
@@ -137,6 +144,8 @@ ul.ui-menu-child {
 	float: none;
 }
 
+
+
 .titulo {
 	font-weight: bold;
 	text-align: left !important;
@@ -148,6 +157,19 @@ ul.ui-menu-child {
 	background: -o-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%); 
 	background: -moz-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%);
 	background: linear-gradient(to left, #4f7199 1%, #aacae2 47%, #607a99 100%); 
+}
+
+.tituloProjeto {
+	font-weight: bold;
+	text-align: left !important;
+	font-family: ""Lobster-Regular";
+	width: 100%;
+	font-size: 28px;
+	color: blue;
+	/*  background: -webkit-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%);
+	background: -o-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%); 
+	background: -moz-linear-gradient(left, #4f7199 1%, #aacae2 47%, #607a99 100%);
+	background: linear-gradient(to left, #4f7199 1%, #aacae2 47%, #607a99 100%);  */
 }
 
 .tituloExpirada {

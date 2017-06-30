@@ -22,7 +22,7 @@ import br.com.ido.dao.Entidade;
 @Table(name = MesaEnderecoEmpresa.nomeTabela, schema = MesaEnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "MesaEnderecoEmpresa.obterMesasPorEnderecoEmpresa", query = "select m from MesaEnderecoEmpresa m join fetch m.enderecoEmpresa e"
-				+ " where e.codigo = :codEnderecoEmpresa") })
+				+ " where e.codigo = :codEnderecoEmpresa order by m.numero asc") })
 public class MesaEnderecoEmpresa extends Entidade {
 
 	private static final long serialVersionUID = -2750705203286181482L;
@@ -34,7 +34,7 @@ public class MesaEnderecoEmpresa extends Entidade {
 	@Column(name = "cod_mesa_endereco_empresa", nullable = false)
 	@SequenceGenerator(name = "mesa_endereco_empresa_cod_mesa_endereco_empresa_seq", sequenceName = "projeto.mesa_endereco_empresa_cod_mesa_endereco_empresa_seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "mesa_endereco_empresa_cod_mesa_endereco_empresa_seq")
-	private Integer codigo;
+	private Long codigo;
 
 	@Column(name = "nr_mesa", nullable = false, length = 50)
 	private Integer numero;
@@ -58,11 +58,11 @@ public class MesaEnderecoEmpresa extends Entidade {
 		return getCodigo();
 	}
 
-	public Integer getCodigo() {
+	public Long getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(Integer codigo) {
+	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 

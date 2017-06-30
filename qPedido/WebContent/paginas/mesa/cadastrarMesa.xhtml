@@ -15,8 +15,9 @@
 	<ui:param name="headerConteudo" value="#{bundle.mesa_cadastroTitulo}" />
 	<ui:param name="bean" value="#{mesaBean}" />
 	<ui:param name="actionVoltar" value="actionVoltar" />
+	<ui:param name="actionNovo" value="actionNovo" />
 	<ui:param name="actionSalvar" value="actionSalvar" />
-	<ui:param name="mostraSalvar" value="S" />
+	<ui:param name="acao" value="S" />
 	<f:metadata>
 		<f:event type="preRenderView"
 			listener="#{mesaBean.verificaSessaoValida}" />
@@ -25,52 +26,48 @@
 
 		<!-- 	<h:panelGrid id="grid" columns="2" layout="block" style="text-align:center;"/> -->
 
-			<h:panelGroup>
-				<h:graphicImage width="15%" value="/resources/mesa.png" />
-			</h:panelGroup>
+		<h:panelGroup>
+			<h:graphicImage width="15%" value="/resources/mesa.png" />
+		</h:panelGroup>
 
-			<br />
+		<br />
 
-			<h:panelGroup id="pngNumeroMesa">
-				<p:outputLabel value="#{bundle.mesa_numeroMesa}:" for="numeroMesa"
-					styleClass="OutputLabelCampo"
-					style="width:60px; font-size:15px;margin-left:-100px;" />
-				<p:inputNumber id="numeroMesa" required="true" thousandSeparator=""
-					decimalPlaces="0" decimalSeparator="" maxValue="999" size="10"
-					requiredMessage="#{bundle.campoObrigatorio} : #{bundle.mesa_numeroMesa}"
-					value="#{mesaBean.mesa.numero}" />
+		<h:panelGroup id="pngNumeroMesa">
+			<p:outputLabel value="#{bundle.mesa_numeroMesa}:" for="numeroMesa"
+				styleClass="OutputLabelCampo"
+				style="width:60px; font-size:15px;margin-left:-100px;" />
+			<p:inputNumber id="numeroMesa" required="true" thousandSeparator=""
+				decimalPlaces="0" decimalSeparator="" maxValue="999" size="10"
+				requiredMessage="#{bundle.campoObrigatorio} : #{bundle.mesa_numeroMesa}"
+				value="#{mesaBean.mesa.numero}" />
 
-			</h:panelGroup>
+		</h:panelGroup>
 
-			<br />
-			<p:spacer height="30" width="0"></p:spacer>
+		<br />
+		<p:spacer height="30" width="0"></p:spacer>
 
-			<h:panelGroup id="pngCadeiras" >
-				<p:outputLabel value="#{bundle.mesa_qtdCadeiras}:" for="qtdCadeiras"
-					styleClass="OutputLabelCampo"
-					style="width:60px; font-size:15px;margin-left:-100px;" />
-				<p:inputNumber id="qtdCadeiras" required="true" thousandSeparator=""
-					decimalPlaces="0" decimalSeparator="" maxValue="99" size="10"
-					requiredMessage="#{bundle.campoObrigatorio} : #{bundle.mesa_qtdCadeiras}"
-					value="#{mesaBean.mesa.qtdCadeiras}" />
+		<h:panelGroup id="pngCadeiras">
+			<p:outputLabel value="#{bundle.mesa_qtdCadeiras}:" for="qtdCadeiras"
+				styleClass="OutputLabelCampo"
+				style="width:60px; font-size:15px;margin-left:-100px;" />
+			<p:inputNumber id="qtdCadeiras" required="true" thousandSeparator=""
+				decimalPlaces="0" decimalSeparator="" maxValue="99" size="10"
+				requiredMessage="#{bundle.campoObrigatorio} : #{bundle.mesa_qtdCadeiras}"
+				value="#{mesaBean.mesa.qtdCadeiras}" />
 
-			</h:panelGroup>
+		</h:panelGroup>
 
-			<br />
-			
-			<p:spacer height="30" width="0" rendered="#{mesaBean.mesa.qrcode != null}"></p:spacer>
+		<br />
 
-			<h:panelGroup rendered="#{mesaBean.mesa.qrcode != null}">
-				<p:graphicImage width="15%" value="#{mesaBean.qrCodeImg}" />
-			</h:panelGroup>
+		<p:spacer height="30" width="0"></p:spacer>
 
-			<br />
+		<h:panelGroup rendered="#{mesaBean.mesa.codigo != null}">
+			<p:commandLink actionListener="#{mesaBean.downloadQRCode}"
+				value="Download QRCode" ajax="false"
+				style="color:blue; text-decoration: underline;"></p:commandLink>
+		</h:panelGroup>
 
-			<h:panelGroup rendered="false">
-				<p:commandButton id="btnSalvar" value="#{bundle.salvarRegistro}"
-					 style="margin-top:20px;"
-					 actionListener="#{mesaBean.actionSalvar}" />
-			</h:panelGroup>
+
 
 
 	</ui:define>

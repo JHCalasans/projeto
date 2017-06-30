@@ -151,10 +151,10 @@ public abstract class SimpleController implements Serializable {
 	}
 
 	public void verificaSessaoValida(ComponentSystemEvent event) {
-		if (!getSessionMap().containsKey("Projeto.UsuarioEnderecoEmpresa"))
+		if (!getSessionMap().containsKey("bringme.usuarioEnderecoEmpresa"))
 			FacesUtil.redirecionar(null, Paginas.PAG_SESSAO_ENCERRADA, true, null);
 		else
-			setUsuarioLogado((UsuarioEnderecoEmpresa) getSessionMap().get("Projeto.UsuarioEnderecoEmpresa"));
+			setUsuarioLogado((UsuarioEnderecoEmpresa) getSessionMap().get("bringme.usuarioEnderecoEmpresa"));
 
 	}
 

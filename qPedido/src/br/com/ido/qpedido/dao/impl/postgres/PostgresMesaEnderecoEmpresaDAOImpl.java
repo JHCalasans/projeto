@@ -13,7 +13,7 @@ import br.com.ido.qpedido.dao.IMesaEnderecoEmpresaDAO;
 import br.com.ido.qpedido.entity.qpedido.MesaEnderecoEmpresa;
 
 @PersistenceContext(unitName = "postgresqlPU")
-public class PostgresMesaEnderecoEmpresaDAOImpl extends GenericDAOImpl<MesaEnderecoEmpresa, Integer>
+public class PostgresMesaEnderecoEmpresaDAOImpl extends GenericDAOImpl<MesaEnderecoEmpresa, Long>
 implements IMesaEnderecoEmpresaDAO{
 
 	@Override

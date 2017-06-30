@@ -1,6 +1,5 @@
 package br.com.ido.qpedido.bo;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,14 +7,10 @@ import javax.persistence.EntityTransaction;
 
 import br.com.ido.excecao.excecaobanco.ExcecaoBanco;
 import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
-import br.com.ido.qpedido.dao.IEmpresaDAO;
 import br.com.ido.qpedido.dao.IEnderecoEmpresaDAO;
 import br.com.ido.qpedido.dao.IMesaEnderecoEmpresaDAO;
-import br.com.ido.qpedido.entity.qpedido.Empresa;
 import br.com.ido.qpedido.entity.qpedido.EnderecoEmpresa;
 import br.com.ido.qpedido.entity.qpedido.MesaEnderecoEmpresa;
-import br.com.ido.qpedido.util.FuncoesUtil;
-import br.com.ido.qpedido.util.QRCodeUtil;
 
 public class MesaEnderecoEmpresaBO extends BaseBO{
 
@@ -54,14 +49,47 @@ public class MesaEnderecoEmpresaBO extends BaseBO{
 		}
 	}
 	
+	public MesaEnderecoEmpresa alterarMesa(MesaEnderecoEmpresa mesa, EnderecoEmpresa enderecoEmpresa) throws ExcecaoNegocio {
+		EntityManager em = emUtil.getEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			IMesaEnderecoEmpresaDAO mesaDAO = fabricaDAO.getPostgresMesaEnderecoEmpresaDAO();	
+			MesaEnderecoEmpresa mesaTemp = new MesaEnderecoEmpresa();
+			mesaTemp.setEnderecoEmpresa(enderecoEmpresa);
+			mesaTemp.setNumero(mesa.getNumero());
+			List<MesaEnderecoEmpresa> lista = mesaDAO.findByExample(mesaTemp, em);
+			if(lista != null && lista.size() > 0 ){
+				emUtil.commitTransaction(transaction);
+				throw new ExcecaoNegocio("Já existe mesa cadastrada com esse número.!");
+			}
+			mesa.setOcupada(false);
+			mesa = mesaDAO.save(mesa, em);
+			emUtil.commitTransaction(transaction);
+			return mesa;
+		} catch (ExcecaoBanco e) {
+			emUtil.rollbackTransaction(transaction);
+			throw new ExcecaoNegocio("Falha ao tentar alterar mesa", e);
+		} finally {
+			emUtil.closeEntityManager(em);
+		}
+	}
+	
 	public MesaEnderecoEmpresa salvarMesa(MesaEnderecoEmpresa mesa) throws ExcecaoNegocio {
 		EntityManager em = emUtil.getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		try {
 			transaction.begin();
-			IMesaEnderecoEmpresaDAO mesaDAO = fabricaDAO.getPostgresMesaEnderecoEmpresaDAO();		
+			IMesaEnderecoEmpresaDAO mesaDAO = fabricaDAO.getPostgresMesaEnderecoEmpresaDAO();	
+			MesaEnderecoEmpresa mesaTemp = new MesaEnderecoEmpresa();
+			mesaTemp.setNumero(mesa.getNumero());
+			List<MesaEnderecoEmpresa> lista = mesaDAO.findByExample(mesaTemp, em);
+			if(lista != null && lista.size() > 0){
+				emUtil.commitTransaction(transaction);
+				throw new ExcecaoNegocio("Já existe mesa cadastrada com esse número.!");
+			}
+			mesa.setCodigo(null);
 			mesa.setOcupada(false);
-			//mesa.setQrcode(QRCodeUtil.gerarQRCode());
 			mesa = mesaDAO.save(mesa, em);
 			emUtil.commitTransaction(transaction);
 			return mesa;
@@ -73,7 +101,27 @@ public class MesaEnderecoEmpresaBO extends BaseBO{
 		}
 	}
 	
-	public MesaEnderecoEmpresa obterPorCod(Integer codMesa) throws ExcecaoNegocio {
+	
+	public void excluirMesa(MesaEnderecoEmpresa mesa) throws ExcecaoNegocio {
+		if(mesa.isOcupada())
+			throw new ExcecaoNegocio("Mesa ocupada no momento, não foi possível excluir!");
+		
+		EntityManager em = emUtil.getEntityManager();
+		EntityTransaction transaction = em.getTransaction();
+		try {
+			transaction.begin();
+			IMesaEnderecoEmpresaDAO mesaDAO = fabricaDAO.getPostgresMesaEnderecoEmpresaDAO();	
+			mesaDAO.delete(mesa, em);
+			emUtil.commitTransaction(transaction);
+		} catch (ExcecaoBanco e) {
+			emUtil.rollbackTransaction(transaction);
+			throw new ExcecaoNegocio("Falha ao tentar excluir mesa", e);
+		} finally {
+			emUtil.closeEntityManager(em);
+		}
+	}
+	
+	public MesaEnderecoEmpresa obterPorCod(Long codMesa) throws ExcecaoNegocio {
 		EntityManager em = emUtil.getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		try {

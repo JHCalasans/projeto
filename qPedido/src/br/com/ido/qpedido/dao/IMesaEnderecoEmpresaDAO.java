@@ -10,7 +10,7 @@ import br.com.ido.excecao.excecaobanco.ExcecaoBanco;
 import br.com.ido.qpedido.entity.qpedido.EnderecoEmpresa;
 import br.com.ido.qpedido.entity.qpedido.MesaEnderecoEmpresa;
 
-public interface IMesaEnderecoEmpresaDAO  extends GenericDAO<MesaEnderecoEmpresa, Integer>{
+public interface IMesaEnderecoEmpresaDAO  extends GenericDAO<MesaEnderecoEmpresa, Long>{
 
 	static CriterioOrdenacao BY_NUM_ASC = CriterioOrdenacao.asc("numero");
 	

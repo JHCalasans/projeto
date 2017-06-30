@@ -29,7 +29,7 @@ public class LoginBean extends SimpleController {
 	@PostConstruct
 	public void carregar() {
 		try {
-			if (getSessionMap().containsKey("Projeto.UsuarioEnderecoEmpresa"))
+			if (getSessionMap().containsKey("bringme.usuarioEnderecoEmpresa"))
 				FacesUtil.redirecionar(null, Paginas.PAG_HOME, true, null);
 
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class LoginBean extends SimpleController {
 		try {
 			UsuarioEnderecoEmpresa usuarioEnderecoEmpresa = UsuarioEnderecoEmpresaBO.getInstance().obterUsuarioEnderecoEmpresaAtivoPorLoginESenha(login, senha);
 			if(usuarioEnderecoEmpresa != null){
-				getSessionMap().put("Projeto.UsuarioEnderecoEmpresa", usuarioEnderecoEmpresa);	
+				getSessionMap().put("bringme.usuarioEnderecoEmpresa", usuarioEnderecoEmpresa);	
 				FacesUtil.redirecionar(null, Paginas.PAG_HOME, true, null);
 			}else
 				addMsg(FacesMessage.SEVERITY_ERROR, "Login/Senha incorretos.");

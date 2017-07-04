@@ -31,6 +31,7 @@ public class LoginBean extends SimpleController {
 		try {
 			if (getSessionMap().containsKey("bringme.usuarioEnderecoEmpresa"))
 				FacesUtil.redirecionar(null, Paginas.PAG_HOME, true, null);
+			
 
 		} catch (Exception e) {
 			ExcecoesUtil.TratarExcecao(e);
@@ -70,6 +71,9 @@ public class LoginBean extends SimpleController {
 			ExcecoesUtil.TratarExcecao(e);
 		}
 	}
+	
+	
+	
 
 	public String getLogin() {
 		return login;

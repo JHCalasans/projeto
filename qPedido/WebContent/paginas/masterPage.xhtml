@@ -70,28 +70,22 @@
 			<h:form id="formMenuNorth" enctype="multipart/form-data">
 				<p:menubar>
 
-
-
 					<p:menuitem value="#{bundle.menuCadastroEmpresa}" ajax="true"
-						styleClass="cabecalhoMenu"
+						styleClass="cabecalhoMenu" rendered="#{erroSessao ne 'S'}"
 						action="/paginas/empresa/cadastrarEmpresa.proj?faces-redirect=true"
 						immediate="true" />
 					<p:menuitem value="#{bundle.menuCadastroTipoPag}" ajax="true"
-						styleClass="cabecalhoMenu"
+						styleClass="cabecalhoMenu" rendered="#{erroSessao ne 'S'}"
 						action="/paginas/tipoPagamento/consultarTipoPagamento.proj?faces-redirect=true"
 						immediate="true" />
-					<p:menuitem value="Movimentação" styleClass="cabecalhoMenu" />
-					<p:menuitem value="Mesas"
+					<p:menuitem value="Movimentação" styleClass="cabecalhoMenu"  rendered="#{erroSessao ne 'S'}"/>
+					<p:menuitem value="Mesas" rendered="#{erroSessao ne 'S'}"
 						action="/paginas/mesa/consultarMesa.proj?faces-redirect=true"
 						immediate="true" styleClass="cabecalhoMenu" />
-					<p:menuitem value="Relatórios" styleClass="cabecalhoMenu" />
-
-			
+					<p:menuitem value="Relatórios" styleClass="cabecalhoMenu" rendered="#{erroSessao ne 'S'}"/>
 
 					<f:facet name="options">				      
-
-						<p:commandButton  value="Logout"	icon="ui-icon-extlink" styleClass="cabecalhoMenuBotao" 
-						/>
+						<p:commandButton  value="Logout" icon="ui-icon-extlink" action="#{bean.logout}"  styleClass="cabecalhoMenuBotao" />
 					</f:facet>
 				</p:menubar>
 			</h:form>
@@ -104,7 +98,7 @@
 		</p:layoutUnit>
 
 
-		<p:layoutUnit position="west" header="Opções">
+		<p:layoutUnit position="west" header="Opções" rendered="#{erroSessao ne 'S'}">
 			<h:form id="formMenuWest" prependId="false">
 				<p:menu>
 					<p:submenu label="#{bundle.acoes}" icon="ui-icon-gear"
@@ -153,14 +147,14 @@
 						<p:commandButton id="btAlterarSecret" widgetVar="btAlterarSecret" icon="ui-icon-refresh"
 							action="#{bean[actionAlterar]}" rendered="#{acao eq 'A' or acao eq 'AE'}" style="margin-top:15px"
 							type="Secret" update="conteudo" value="#{bundle.alterarRegistro}" />
-						<p:commandButton id="btExcluirSecret" widgetVar="btExcluirSecret"
+						<p:commandButton id="btExcluirSecret" widgetVar="btExcluirSecret" icon="ui-icon-close"
 							action="#{bean[actionExcluir]}"  style="margin-top:15px; margin-left:15px;" rendered="#{acao eq 'AE'}"
 							type="Secret" update="conteudo"  value="#{bundle.excluirRegistro}">
-							<p:confirm header="#{bundle.confirmacao}"
+							<p:confirm header="#{bundle.confirmacao}"  
 								message="#{bundle.msgConfirmacaoExcluir}" icon="ui-icon-alert" />
 						</p:commandButton>
 
-						<p:confirmDialog id="cdRemoverRegistro" global="true"
+						<p:confirmDialog id="cdRemoverRegistro" global="true" styleClass="dlgExclusao"
 							showEffect="fade" hideEffect="fade">
 							<h:panelGroup layout="block" style="text-align:center;">
 								<p:commandButton value="#{bundle.sim}" type="button"

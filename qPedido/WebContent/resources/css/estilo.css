@@ -16,6 +16,12 @@ form span.p_like input,form span.p_like select,form span.p_like img,form span.p_
 }
 
 
+.dlgExclusao .ui-widget-header .ui-dialog{
+	background: linear-gradient(to left, #4f00ff 1%, #aacae2 47%, #607aff 100%);
+	left: 50% ! important;
+}
+
+
 form p,form span.p_like,form div.p_like {
 	clear: both;
 	float: left;

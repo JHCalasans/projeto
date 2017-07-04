@@ -22,6 +22,7 @@ import org.primefaces.context.RequestContext;
 
 import br.com.ido.qpedido.dao.FabricaDAO;
 import br.com.ido.qpedido.entity.qpedido.UsuarioEnderecoEmpresa;
+import br.com.ido.qpedido.util.ExcecoesUtil;
 import br.com.ido.qpedido.util.FacesUtil;
 import br.com.ido.qpedido.util.Paginas;
 
@@ -156,6 +157,19 @@ public abstract class SimpleController implements Serializable {
 		else
 			setUsuarioLogado((UsuarioEnderecoEmpresa) getSessionMap().get("bringme.usuarioEnderecoEmpresa"));
 
+	}
+	
+	public String logout() {
+		try {
+			if (getSessionMap().containsKey("bringme.usuarioEnderecoEmpresa"))
+				getSessionMap().clear();
+			
+			return "/paginas/login.xhtml?faces-redirect=true";
+
+		} catch (Exception e) {
+			ExcecoesUtil.TratarExcecao(e);
+		}
+		return "";
 	}
 
 	public abstract String actionNovo();

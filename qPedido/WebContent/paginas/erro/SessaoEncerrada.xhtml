@@ -10,6 +10,8 @@
 
 <ui:composition template="/paginas/masterPage.xhtml">
 	<ui:param name="tituloPagina" value="Sessão Encerrada" />
+	<ui:param name="erroSessao" value="S" />
+	<ui:param name="bean" value="#{erroBean}" />
 	<ui:define name="conteudo">
 		<h:form>
 			<p:messages autoUpdate="true" />

@@ -3,7 +3,9 @@ package br.com.ido.jsf.util;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
-import br.com.ido.dao.CriterioOrdenacao;
+import br.com.minhaLib.dao.CriterioOrdenacao;
+
+
 
 public abstract class CustomLazyDataModel<E> extends LazyDataModel<E> {
 

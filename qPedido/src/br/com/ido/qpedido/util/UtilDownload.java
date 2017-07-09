@@ -11,7 +11,7 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.export.JRPdfExporter;

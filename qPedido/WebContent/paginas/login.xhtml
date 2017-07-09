@@ -31,7 +31,7 @@
 			href="#{request.contextPath}/resources/favicon.ico" />
 	</f:facet>
 </h:head>
-<h:body styleClass="with-bg">
+<h:body styleClass="with-bg" >
 
 
 	<p:ajaxStatus>
@@ -61,28 +61,37 @@
 	</p:ajaxStatus>
 
 
-	<h:form id="loginForm" prependId="false">
+	<h:form id="loginForm" prependId="false" >
 		<p:messages closable="true" globalOnly="true" id="msgs" />
 		<div align="center">
-			<p:panel id="loginPanel" style=" text-align: center; border: none">
-				<h:outputLabel value="Login" styleClass="tituloProjeto" />
-				<hr></hr>
+
+			<p:panel style=" text-align: center; border: none;">
+				<h:graphicImage width="15%" value="/resources/meSirva.jpg"
+					style="margin-left:50px;" />
+			</p:panel>
+			<hr></hr>
+			<p:panel id="loginPanel"
+				style=" text-align: center; border: none; background-image: url('../resources/background.jpg'); height:700px;">
+
+				<!-- <h:outputLabel value="Login" styleClass="tituloProjeto" /> -->
+
 				<br></br>
-				<h:panelGroup >
-					<p:outputLabel value="Login " for="loginName"
+				<h:panelGroup>
+					<p:outputLabel value="Login " for="loginName" rendered="false"
 						styleClass="OutputLabelCampo" style="width:30px" />
-					<p:inputText id="loginName" value="#{loginBean.login}" required="true"
+					<p:inputText id="loginName" value="#{loginBean.login}"
+						required="true" placeholder="Login"
 						validatorMessage="Login nÃ£o pode estar em branco!">
 						<f:validateLength minimum="1" />
 					</p:inputText>
 				</h:panelGroup>
 				<div class="clear"></div>
 				<br></br>
-				<h:panelGroup >
-					<p:outputLabel value="Senha " for="loginSenha"
+				<h:panelGroup>
+					<p:outputLabel value="Senha " for="loginSenha" rendered="false"
 						styleClass="OutputLabelCampo" style="width:30px" />
 					<p:password feedback="false" id="loginSenha" required="true"
-						value="#{loginBean.senha}"
+						value="#{loginBean.senha}" placeholder="Senha"
 						validatorMessage="Senha não pode estar em branco!" minLength="1" />
 				</h:panelGroup>
 				<br></br>

@@ -64,7 +64,7 @@
 
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north" header="+QuePedido"
+		<p:layoutUnit position="north" header="meSirva"
 			styleClass="cabecalhoMenu"
 			style="text-align: center !important; font-size: 19px !important;z-index: 1;">
 			<h:form id="formMenuNorth" enctype="multipart/form-data">
@@ -78,14 +78,18 @@
 						styleClass="cabecalhoMenu" rendered="#{erroSessao ne 'S'}"
 						action="/paginas/tipoPagamento/consultarTipoPagamento.proj?faces-redirect=true"
 						immediate="true" />
-					<p:menuitem value="Movimentação" styleClass="cabecalhoMenu"  rendered="#{erroSessao ne 'S'}"/>
+					<p:menuitem value="Movimentação" styleClass="cabecalhoMenu"
+						rendered="#{erroSessao ne 'S'}" />
 					<p:menuitem value="Mesas" rendered="#{erroSessao ne 'S'}"
 						action="/paginas/mesa/consultarMesa.proj?faces-redirect=true"
 						immediate="true" styleClass="cabecalhoMenu" />
-					<p:menuitem value="Relatórios" styleClass="cabecalhoMenu" rendered="#{erroSessao ne 'S'}"/>
+					<p:menuitem value="Relatórios" styleClass="cabecalhoMenu"
+						rendered="#{erroSessao ne 'S'}" />
 
-					<f:facet name="options">				      
-						<p:commandButton  value="Logout" icon="ui-icon-extlink" action="#{bean.logout}"  styleClass="cabecalhoMenuBotao" />
+					<f:facet name="options">
+						<p:commandButton value="#{erroSessao ne 'S'? 'Logout' : 'Login'}"
+							icon="ui-icon-extlink" action="#{bean.logout}"
+							styleClass="cabecalhoMenuBotao" />
 					</f:facet>
 				</p:menubar>
 			</h:form>
@@ -98,7 +102,8 @@
 		</p:layoutUnit>
 
 
-		<p:layoutUnit position="west" header="Opções" rendered="#{erroSessao ne 'S'}">
+		<p:layoutUnit position="west" header="Opções"
+			rendered="#{erroSessao ne 'S'}">
 			<h:form id="formMenuWest" prependId="false">
 				<p:menu>
 					<p:submenu label="#{bundle.acoes}" icon="ui-icon-gear"
@@ -108,9 +113,9 @@
 						<p:menuitem value="#{bundle.salvarRegistro}" icon="ui-icon-disk"
 							disabled="#{empty actionSalvar}" style="display: none;"
 							onclick="$('#btSalvarSecret').click();" />
-						<p:menuitem value="#{bundle.alterarRegistro}" style="display: none;"
-							disabled="#{empty actionAlterar}" icon="ui-icon-refresh"
-							onclick="$('#btAlterarSecret').click();"
+						<p:menuitem value="#{bundle.alterarRegistro}"
+							style="display: none;" disabled="#{empty actionAlterar}"
+							icon="ui-icon-refresh" onclick="$('#btAlterarSecret').click();"
 							process="@this,:formCenter" />
 						<p:menuitem value="#{bundle.excluirRegistro}"
 							onclick="$('#btExcluirSecret').click();" style="display: none;"
@@ -130,11 +135,12 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit id="centerLayout" header="#{headerConteudo}"
+			
 			position="center">
 
 			<h:form id="formCenter" prependId="false">
 				<div align="center">
-					<p:panel id="conteudo" >
+					<p:panel id="conteudo">
 						<div class="clear" id="div_pre_conteudo">
 							<p:messages closable="true" id="msgs" />
 						</div>
@@ -142,20 +148,23 @@
 						<div class="clear" id="div_pos_conteudo" />
 						<p:commandButton id="btSalvarSecret" widgetVar="btSalvarSecret"
 							action="#{bean[actionSalvar]}" style="margin-top:15px"
-							rendered="#{acao eq 'S'}" type="Secret" 
-							update="conteudo, msgs" value="#{bundle.salvarRegistro}" />
-						<p:commandButton id="btAlterarSecret" widgetVar="btAlterarSecret" icon="ui-icon-refresh"
-							action="#{bean[actionAlterar]}" rendered="#{acao eq 'A' or acao eq 'AE'}" style="margin-top:15px"
+							rendered="#{acao eq 'S'}" type="Secret" update="conteudo, msgs"
+							value="#{bundle.salvarRegistro}" />
+						<p:commandButton id="btAlterarSecret" widgetVar="btAlterarSecret"
+							icon="ui-icon-refresh" action="#{bean[actionAlterar]}"
+							rendered="#{acao eq 'A' or acao eq 'AE'}" style="margin-top:15px"
 							type="Secret" update="conteudo" value="#{bundle.alterarRegistro}" />
-						<p:commandButton id="btExcluirSecret" widgetVar="btExcluirSecret" icon="ui-icon-close"
-							action="#{bean[actionExcluir]}"  style="margin-top:15px; margin-left:15px;" rendered="#{acao eq 'AE'}"
-							type="Secret" update="conteudo"  value="#{bundle.excluirRegistro}">
-							<p:confirm header="#{bundle.confirmacao}"  
+						<p:commandButton id="btExcluirSecret" widgetVar="btExcluirSecret"
+							icon="ui-icon-close" action="#{bean[actionExcluir]}"
+							style="margin-top:15px; margin-left:15px;"
+							rendered="#{acao eq 'AE'}" type="Secret" update="conteudo"
+							value="#{bundle.excluirRegistro}">
+							<p:confirm header="#{bundle.confirmacao}"
 								message="#{bundle.msgConfirmacaoExcluir}" icon="ui-icon-alert" />
 						</p:commandButton>
 
-						<p:confirmDialog id="cdRemoverRegistro" global="true" styleClass="dlgExclusao"
-							showEffect="fade" hideEffect="fade">
+						<p:confirmDialog id="cdRemoverRegistro" global="true"
+							styleClass="dlgExclusao" showEffect="fade" hideEffect="fade">
 							<h:panelGroup layout="block" style="text-align:center;">
 								<p:commandButton value="#{bundle.sim}" type="button"
 									styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />

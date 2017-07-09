@@ -17,8 +17,8 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.transform.AliasToBeanResultTransformer;
 
-import br.com.ido.excecao.excecaobanco.ExcecaoBanco;
 import br.com.ido.qpedido.dao.nativequery.OperatorCondition.OperatorEnum;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
 
 public class NativeSQLUtil {
 

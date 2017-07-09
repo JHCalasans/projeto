@@ -9,7 +9,9 @@ import javax.faces.application.FacesMessage;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
+
+
 
 public class ExcecoesUtil {
 

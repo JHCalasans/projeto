@@ -14,7 +14,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import br.com.ido.dao.Entidade;
+import br.com.minhaLib.dao.Entidade;
+
+
+
 
 @Entity
 @Table(name = TipoPagamentoEnderecoEmpresa.nomeTabela, schema = TipoPagamentoEnderecoEmpresa.esquema, catalog = "projeto")

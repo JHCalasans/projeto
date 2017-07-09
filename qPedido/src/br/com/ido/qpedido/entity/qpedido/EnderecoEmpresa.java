@@ -13,10 +13,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import br.com.minhaLib.dao.Entidade;
 
-import br.com.ido.dao.Entidade;
+
+
 
 @Entity
 @Table(name = EnderecoEmpresa.nomeTabela, schema = EnderecoEmpresa.esquema, catalog = "projeto")

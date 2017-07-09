@@ -5,7 +5,7 @@
 	version="2.1">
 
 	
-	<persistence-unit name="postgresqlPU" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="postgresPU" transaction-type="RESOURCE_LOCAL">
 	
 
 		<properties>

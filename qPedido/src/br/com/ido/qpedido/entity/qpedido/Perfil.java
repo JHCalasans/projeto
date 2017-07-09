@@ -11,7 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import br.com.ido.dao.Entidade;
+import br.com.minhaLib.dao.Entidade;
+
+
 
 
 @Entity

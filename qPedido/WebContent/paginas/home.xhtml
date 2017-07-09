@@ -14,7 +14,6 @@
 <ui:composition template="/paginas/masterPage.xhtml">
 	<ui:param name="headerConteudo" value="Home" />
 	<ui:param name="bean" value="#{homeBean}" />
-	<ui:param name="actionNovo" value="actionNovo" />
 	<f:metadata>
 		<f:event type="preRenderView" listener="#{homeBean.verificaSessaoValida}" />
 	</f:metadata>

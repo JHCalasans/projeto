@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import br.com.ido.dao.Entidade;
+import br.com.minhaLib.dao.Entidade;
+
+
 
 @Entity
 @Table(name = Parametro.nomeTabela, schema = Parametro.esquema, catalog = "projeto")

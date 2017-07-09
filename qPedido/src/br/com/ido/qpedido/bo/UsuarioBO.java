@@ -1,20 +1,17 @@
 package br.com.ido.qpedido.bo;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
 import br.com.ido.qpedido.dao.IUsuarioDAO;
-import br.com.ido.qpedido.dao.IUsuarioEnderecoEmpresaDAO;
 import br.com.ido.qpedido.entity.qpedido.Usuario;
-import br.com.ido.qpedido.entity.qpedido.UsuarioEnderecoEmpresa;
 import br.com.ido.qpedido.util.FuncoesUtil;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
 
 
-public class UsuarioBO extends BaseBO {
+public class UsuarioBO extends MeSirvaBO {
 
 	private static UsuarioBO instance;
 

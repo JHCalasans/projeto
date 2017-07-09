@@ -1,8 +1,8 @@
 package br.com.ido.qpedido.dao;
 
-import br.com.ido.dao.CriterioOrdenacao;
-import br.com.ido.dao.GenericDAO;
 import br.com.ido.qpedido.entity.qpedido.Empresa;
+import br.com.minhaLib.dao.CriterioOrdenacao;
+import br.com.minhaLib.dao.GenericDAO;
 
 public interface IEmpresaDAO extends GenericDAO<Empresa, Integer> {
 

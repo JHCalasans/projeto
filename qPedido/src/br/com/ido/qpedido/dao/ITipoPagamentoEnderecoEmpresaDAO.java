@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
-import br.com.ido.dao.CriterioOrdenacao;
-import br.com.ido.dao.GenericDAO;
-import br.com.ido.excecao.excecaobanco.ExcecaoBanco;
 import br.com.ido.qpedido.entity.qpedido.TipoPagamentoEnderecoEmpresa;
+import br.com.minhaLib.dao.CriterioOrdenacao;
+import br.com.minhaLib.dao.GenericDAO;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
 
 public interface ITipoPagamentoEnderecoEmpresaDAO extends GenericDAO<TipoPagamentoEnderecoEmpresa, Integer> {
 

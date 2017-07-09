@@ -10,13 +10,13 @@ import javax.faces.bean.ViewScoped;
 
 import org.primefaces.model.StreamedContent;
 
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
 import br.com.ido.qpedido.bo.MesaEnderecoEmpresaBO;
 import br.com.ido.qpedido.entity.qpedido.MesaEnderecoEmpresa;
 import br.com.ido.qpedido.util.ExcecoesUtil;
 import br.com.ido.qpedido.util.FacesUtil;
 import br.com.ido.qpedido.util.QRCodeUtil;
 import br.com.ido.qpedido.util.UtilDownload;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
 
 @ManagedBean(name = MesaBean.NOME_BEAN)
 @ViewScoped

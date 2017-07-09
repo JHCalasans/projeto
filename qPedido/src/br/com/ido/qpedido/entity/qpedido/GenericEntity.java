@@ -1,6 +1,6 @@
 package br.com.ido.qpedido.entity.qpedido;
 
-import br.com.ido.dao.Entidade;
+import br.com.minhaLib.dao.Entidade;
 
 public class GenericEntity extends Entidade {
 

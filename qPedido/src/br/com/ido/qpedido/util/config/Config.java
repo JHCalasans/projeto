@@ -4,7 +4,6 @@ import static org.quartz.JobBuilder.newJob;
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule;
 import static org.quartz.TriggerBuilder.newTrigger;
 
-import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -17,7 +16,10 @@ import org.quartz.SchedulerFactory;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
 
-import br.com.ido.impl.GenericDAOImpl;
+import br.com.minhaLib.util.EntityManagerUtil;
+
+
+
 
 public class Config implements ServletContextListener {
 
@@ -41,8 +43,9 @@ public class Config implements ServletContextListener {
 					e.printStackTrace();
 				}
 			}
-			EntityManagerFactory emf = GenericDAOImpl.getEntityManagerFactory("postgresqlPU");
-			emf.close();
+			/*EntityManagerFactory emf = GenericDAOImpl.getEntityManagerFactory("postgresqlPU");
+			emf.close();*/
+			EntityManagerUtil.closeEntityManagerFactory("postgresqlPU");
 
 			LogManager.shutdown();
 		}

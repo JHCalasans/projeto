@@ -9,7 +9,10 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-import br.com.ido.dao.Entidade;
+import br.com.minhaLib.dao.Entidade;
+
+
+
 
 
 

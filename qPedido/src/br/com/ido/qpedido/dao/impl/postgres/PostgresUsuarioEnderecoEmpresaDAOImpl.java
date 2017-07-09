@@ -7,10 +7,10 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import br.com.ido.excecao.excecaobanco.ExcecaoBanco;
-import br.com.ido.impl.GenericDAOImpl;
 import br.com.ido.qpedido.dao.IUsuarioEnderecoEmpresaDAO;
 import br.com.ido.qpedido.entity.qpedido.UsuarioEnderecoEmpresa;
+import br.com.minhaLib.dao.impl.GenericDAOImpl;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
 
 @PersistenceContext(unitName = "postgresqlPU")
 public class PostgresUsuarioEnderecoEmpresaDAOImpl extends GenericDAOImpl<UsuarioEnderecoEmpresa, Integer>

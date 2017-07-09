@@ -1,6 +1,6 @@
 package br.com.ido.qpedido.exceptions;
 
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
 
 public class ExcecaoGerarRelatorio extends ExcecaoNegocio {
 

@@ -6,14 +6,14 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import br.com.ido.excecao.excecaobanco.ExcecaoBanco;
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
 import br.com.ido.qpedido.dao.IEmpresaDAO;
 import br.com.ido.qpedido.dao.IEnderecoEmpresaDAO;
 import br.com.ido.qpedido.entity.qpedido.Empresa;
 import br.com.ido.qpedido.entity.qpedido.EnderecoEmpresa;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
 
-public class EmpresaBO extends BaseBO {
+public class EmpresaBO extends MeSirvaBO {
 
 	private static EmpresaBO instance;
 

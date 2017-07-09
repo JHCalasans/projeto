@@ -1,25 +1,7 @@
 package br.com.ido.qpedido.util;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import br.com.ido.excecao.excecaonegocio.ExcecaoNegocio;
-import br.com.ido.qpedido.enums.TipoRelatorioEnum;
-import br.com.ido.qpedido.exceptions.ExcecaoGerarRelatorio;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRPrintElement;
-import net.sf.jasperreports.engine.JRPrintPage;
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
 public class RelatorioUtil {
-
+/*
 	public static void gerarRelatorio(Map<String, Object> parametros,
 			TipoRelatorioEnum tipoRel,
 			Collection<?> dados)
@@ -208,5 +190,5 @@ public class RelatorioUtil {
 					"Falha ao tentar criar o Relatório "
 							+ tipoRel.getDescricao(), e);
 		}
-	}
+	}*/
 }

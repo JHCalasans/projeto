@@ -28,11 +28,23 @@
 		<!-- 	<h:panelGrid id="grid" columns="2" layout="block" style="text-align:center;"/> -->
 
 		<h:panelGroup>
-			<p:graphicImage width="15%" value="/resources/mesa.png" style="border-style: solid; border-width: 3px; border-color: #101466;"  />
+			<p:graphicImage width="15%" value="/resources/mesa.png"
+				style="border-style: solid; border-width: 3px; border-color: #101466;" />
+		</h:panelGroup>
+		
+		<br />
+		<p:spacer height="25" width="0"></p:spacer>
+
+		<h:panelGroup>
+			<p:outputLabel value="#{mesaBean.mesa.ocupada ? 'Ocupada' : 'Livre'}"
+				id="msgOcupada"
+				styleClass="#{mesaBean.mesa.ocupada ? 'msgComFundoVermelho' : 'msgComFundoVerde'}"
+				style="font-size:155%;">
+			</p:outputLabel>
 		</h:panelGroup>
 
 		<br />
-		
+
 		<p:spacer height="30" width="0"></p:spacer>
 
 		<h:panelGroup id="pngNumeroMesa">
@@ -61,10 +73,11 @@
 		</h:panelGroup>
 
 		<br />
-		<br style="margin-bottom:40px;"/>
+		<br style="margin-bottom: 40px;" />
 		<h:panelGroup>
-			<p:commandLink actionListener="#{mesaBean.downloadQRCode}" value="Download QRCode" ajax="false"
-			style="color:blue; text-decoration: underline;"></p:commandLink>
+			<p:commandLink actionListener="#{mesaBean.downloadQRCode}"
+				value="Download QRCode" ajax="false"
+				style="color:blue; text-decoration: underline;"></p:commandLink>
 		</h:panelGroup>
 
 		<br />

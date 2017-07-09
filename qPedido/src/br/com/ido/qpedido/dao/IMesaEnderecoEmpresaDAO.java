@@ -14,4 +14,6 @@ public interface IMesaEnderecoEmpresaDAO  extends GenericDAO<MesaEnderecoEmpresa
 	static CriterioOrdenacao BY_NUM_ASC = CriterioOrdenacao.asc("numero");
 	
 	public List<MesaEnderecoEmpresa> obterPorEnderecoEmpresa(Integer codEnderecoEmpresa ,EntityManager em) throws ExcecaoBanco;
+	
+	public MesaEnderecoEmpresa obterPorCodigo(Long codMesa ,EntityManager em) throws ExcecaoBanco;
 }

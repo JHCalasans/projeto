@@ -12,6 +12,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.minhaLib.dao.Entidade;
 
@@ -28,6 +29,7 @@ import br.com.minhaLib.dao.Entidade;
 		@NamedQuery(name = "EnderecoEmpresa.obterPorDistancia", query = "select e from EnderecoEmpresa e join fetch e.empresa ep"
 				+ " where e.latitude >= (:latitude - 0.2) and e.latitude <= (:latitude + 0.2) and e.longitude >= (:longitude - 0.2)  and e.longitude <= (:longitude + 0.2)")
 })
+@XmlRootElement
 public class EnderecoEmpresa extends Entidade {
 
 	private static final long serialVersionUID = -9165454169466824008L;

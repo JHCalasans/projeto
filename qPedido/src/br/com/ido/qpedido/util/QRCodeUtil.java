@@ -18,8 +18,8 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 public class QRCodeUtil {
 
-	public static byte[] gerarQRCode() {
-		String textodoCodigo = "http://www.google.com.br";
+	public static byte[] gerarQRCode(Long codMesa) {
+		String textodoCodigo = "http://localhost:8080/meSirva/ws/mesaEnderecoEmpresa/lerQRCode?codMesa=" + codMesa;
 		//String caminho = "C:/Users/d1396/Desktop/seucurso.png";
 		int tam = 525;
 		String tipoArquivo = "jpg";

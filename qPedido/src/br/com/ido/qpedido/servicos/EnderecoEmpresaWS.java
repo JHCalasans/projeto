@@ -31,7 +31,7 @@ public class EnderecoEmpresaWS {
 			return Response.status(Status.OK).entity(entidade).build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao buscar usuário").build();
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao buscar estabelecimentos").build();
 		}
 	}
 
@@ -45,7 +45,7 @@ public class EnderecoEmpresaWS {
 			return Response.status(Status.OK).entity(entidade).build();
 		} catch (Exception e) {
 			e.printStackTrace();
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao buscar usuário").build();
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity("Falha ao buscar estabelecimentos").build();
 		}
 	}
 

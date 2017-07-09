@@ -31,6 +31,10 @@ public class MesaBean extends SimpleController {
 	private MesaEnderecoEmpresa mesa;
 
 	private StreamedContent qrCodeImg;
+	
+	private String corMsg;
+	
+	private String msgOcupada;
 
 	@PostConstruct
 	public void carregar() {
@@ -52,7 +56,7 @@ public class MesaBean extends SimpleController {
 
 	public void downloadQRCode() {
 		try {
-			UtilDownload.download(QRCodeUtil.gerarQRCode(), "QRCode Mesa " + mesa.getNumero() + ".jpg",
+			UtilDownload.download(QRCodeUtil.gerarQRCode(mesa.getCodigo()), "QRCode Mesa " + mesa.getNumero() + ".jpg",
 					UtilDownload.MIMETYPE_OCTETSTREAM, UtilDownload.CONTENT_DISPOSITION_ATTACHMENT);
 		} catch (IOException | ExcecaoNegocio e) {
 			ExcecoesUtil.TratarExcecao(e);
@@ -100,10 +104,11 @@ public class MesaBean extends SimpleController {
 			MesaEnderecoEmpresaBO.getInstance().excluirMesa(mesa);
 			mesa = null;
 			addMsg(FacesMessage.SEVERITY_INFO, "Mesa Excluída com sucesso.!");
+			return "consultarMesa.ido?faces-redirect=true";
 		} catch (ExcecaoNegocio e) {
-			e.printStackTrace();
+			ExcecoesUtil.TratarExcecao(e);
 		}
-		return "consultarMesa.ido?faces-redirect=true";
+		return "";
 	}
 
 	@Override
@@ -133,6 +138,22 @@ public class MesaBean extends SimpleController {
 
 	public void setQrCodeImg(StreamedContent qrCodeImg) {
 		this.qrCodeImg = qrCodeImg;
+	}
+
+	public String getCorMsg() {
+		return corMsg;
+	}
+
+	public void setCorMsg(String corMsg) {
+		this.corMsg = corMsg;
+	}
+
+	public String getMsgOcupada() {
+		return msgOcupada;
+	}
+
+	public void setMsgOcupada(String msgOcupada) {
+		this.msgOcupada = msgOcupada;
 	}
 
 }

@@ -30,9 +30,8 @@
 			style="top: 200px; width:100%; 
 					background-color: transparent; margin-top: 10px;">
 
-			<h:link id="clEditar" immediate="true" process="@this"
-				 ajax="false" outcome="alterarMesa.proj"
-				update="msgs,grow">
+			<h:link id="clEditar" immediate="true" process="@this" ajax="false"
+				outcome="alterarMesa.proj" update="msgs,grow">
 				<p:panelGrid columns="1" layout="grid"
 					styleClass="ui-panelgrid-blank"
 					style="text-align:center; border-style: solid; border-width: 3%; border-color: transparent; margin-bottom:15px;  border-radius: 5px;">
@@ -43,9 +42,16 @@
 						<h:graphicImage width="55%" value="/resources/mesa.png" />
 					</f:facet>
 					<h2 style="font-size: 120%">MESA #{mesa.numero}</h2>
+					<p:outputLabel value="#{mesa.ocupada ? 'Ocupada' : 'Livre'}"
+						id="msgOcupada"
+						styleClass="#{mesa.ocupada ? 'msgComFundoVermelho' : 'msgComFundoVerde'}"
+						>
+					</p:outputLabel>
+
 				</p:panelGrid>
 				<f:param name="codMesa" value="#{mesa.codigo}" />
 			</h:link>
+
 
 		</p:dataGrid>
 

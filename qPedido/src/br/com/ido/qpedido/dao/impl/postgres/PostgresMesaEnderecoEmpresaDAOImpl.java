@@ -26,4 +26,15 @@ implements IMesaEnderecoEmpresaDAO{
 
 	}
 
+	@Override
+	public MesaEnderecoEmpresa obterPorCodigo(Long codMesa, EntityManager em) throws ExcecaoBanco {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("codMesa", codMesa);
+		MesaEnderecoEmpresa result = null;
+		List<MesaEnderecoEmpresa> lista = findByNamedQueryAndNamedParams("MesaEnderecoEmpresa.obterMesasPorCod", params, em);
+		if(lista != null && lista.size() > 0)
+			result = lista.get(0);
+		return result;
+	}
+
 }

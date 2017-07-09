@@ -14,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import br.com.minhaLib.dao.Entidade;
 
@@ -24,7 +25,11 @@ import br.com.minhaLib.dao.Entidade;
 @Table(name = MesaEnderecoEmpresa.nomeTabela, schema = MesaEnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
 		@NamedQuery(name = "MesaEnderecoEmpresa.obterMesasPorEnderecoEmpresa", query = "select m from MesaEnderecoEmpresa m join fetch m.enderecoEmpresa e"
-				+ " where e.codigo = :codEnderecoEmpresa order by m.numero asc") })
+				+ " where e.codigo = :codEnderecoEmpresa order by m.numero asc"),
+		@NamedQuery(name = "MesaEnderecoEmpresa.obterMesasPorCod", query = "select m from MesaEnderecoEmpresa m join fetch m.enderecoEmpresa e join fetch e.empresa ee"
+				+ " where m.codigo = :codMesa ") 
+})
+@XmlRootElement
 public class MesaEnderecoEmpresa extends Entidade {
 
 	private static final long serialVersionUID = -2750705203286181482L;

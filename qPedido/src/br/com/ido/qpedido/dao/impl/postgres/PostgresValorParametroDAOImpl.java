@@ -8,8 +8,7 @@ import br.com.minhaLib.dao.CriterioOrdenacao;
 import br.com.minhaLib.dao.impl.GenericDAOImpl;
 
 
-
-@PersistenceContext(unitName = "cachePU")
+@PersistenceContext(unitName = "postgresPU")
 class PostgresValorParametroDAOImpl extends
 		GenericDAOImpl<ValorParametro, Integer> implements
 		IValorParametroDAO {

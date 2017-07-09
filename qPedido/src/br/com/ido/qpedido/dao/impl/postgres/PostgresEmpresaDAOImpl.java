@@ -6,7 +6,7 @@ import br.com.ido.qpedido.dao.IEmpresaDAO;
 import br.com.ido.qpedido.entity.qpedido.Empresa;
 import br.com.minhaLib.dao.impl.GenericDAOImpl;
 
-@PersistenceContext(unitName = "postgresqlPU")
+@PersistenceContext(unitName = "postgresPU")
 public class PostgresEmpresaDAOImpl extends GenericDAOImpl<Empresa, Integer>
 		implements IEmpresaDAO {
 

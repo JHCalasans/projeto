@@ -11,7 +11,7 @@ import br.com.ido.qpedido.entity.qpedido.TipoPagamento;
 import br.com.minhaLib.dao.impl.GenericDAOImpl;
 import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
 
-@PersistenceContext(unitName = "postgresqlPU")
+@PersistenceContext(unitName = "postgresPU")
 public class PostgresTipoPagamentoDAOImpl extends GenericDAOImpl<TipoPagamento, Integer> implements ITipoPagamentoDAO {
 
 	@Override

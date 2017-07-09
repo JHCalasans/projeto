@@ -14,7 +14,7 @@ import br.com.ido.qpedido.util.FacesUtil;
 import br.com.minhaLib.dao.impl.GenericDAOImpl;
 import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
 
-@PersistenceContext(unitName = "postgresqlPU")
+@PersistenceContext(unitName = "postgresPU")
 public class PostgresEnderecoEmpresaDAOImpl extends GenericDAOImpl<EnderecoEmpresa, Integer>
 		implements IEnderecoEmpresaDAO {
 

@@ -2,14 +2,14 @@ package br.com.ido.qpedido.enums;
 
 import br.com.minhaLib.enums.IEnum;
 
-public enum ConstantesEnum implements IEnum {
+public enum ParametroEnum implements IEnum {
 
-	CHAVE_SESSION_END_EMPRESA(1, "qPedido.codEnderecoEmpresa");
-
+	IP_SERVIDOR("IP_SERVIDOR", "IP_SERVIDOR");
+	
 	private final String descricao;
-	private final Integer codigo;
+	private final String codigo;
 
-	private ConstantesEnum(Integer codigo, String descricao) {
+	private ParametroEnum(String codigo, String descricao) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 	}
@@ -20,7 +20,7 @@ public enum ConstantesEnum implements IEnum {
 	}
 
 	@Override
-	public Integer getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
@@ -29,11 +29,11 @@ public enum ConstantesEnum implements IEnum {
 		return descricao;
 	}
 
-	public static ConstantesEnum valueOf(Integer codigo) {
+	public static ParametroEnum valueOf(Integer codigo) {
 		if (codigo == null) {
 			return null;
 		}
-		for (ConstantesEnum parametroEnum : values()) {
+		for (ParametroEnum parametroEnum : values()) {
 			if (parametroEnum.getCodigo().equals(codigo)) {
 				return parametroEnum;
 			}

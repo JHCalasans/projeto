@@ -6,12 +6,14 @@ import br.com.ido.qpedido.dao.FabricaDAO;
 import br.com.ido.qpedido.dao.IEmpresaDAO;
 import br.com.ido.qpedido.dao.IEnderecoEmpresaDAO;
 import br.com.ido.qpedido.dao.IMesaEnderecoEmpresaDAO;
+import br.com.ido.qpedido.dao.IParametroDAO;
 import br.com.ido.qpedido.dao.IPerfilDAO;
 import br.com.ido.qpedido.dao.ITipoPagamentoDAO;
 import br.com.ido.qpedido.dao.ITipoPagamentoEnderecoEmpresaDAO;
 import br.com.ido.qpedido.dao.IUsuarioDAO;
 import br.com.ido.qpedido.dao.IUsuarioEnderecoEmpresaDAO;
 import br.com.ido.qpedido.dao.IUsuarioPerfilDAO;
+import br.com.ido.qpedido.dao.IValorParametroDAO;
 
 final class PostgresFabricaDAO extends FabricaDAO {
 
@@ -34,6 +36,8 @@ final class PostgresFabricaDAO extends FabricaDAO {
 	private static PostgresPerfilDAOImpl postgresPerfilDAOImpl;
 	private static PostgresUsuarioPerfilDAOImpl postgresUsuarioPerfilDAOImpl;
 	private static PostgresUsuarioEnderecoEmpresaDAOImpl postgresUsuarioEnderecoEmpresaDAOImpl;
+	private static PostgresParametroDAOImpl postgresParametroDAOImpl;
+	private static PostgresValorParametroDAOImpl postgresValorParametroDAOImpl;
 
 	private PostgresFabricaDAO() {
 
@@ -119,5 +123,21 @@ final class PostgresFabricaDAO extends FabricaDAO {
 			postgresUsuarioEnderecoEmpresaDAOImpl = new PostgresUsuarioEnderecoEmpresaDAOImpl();
 		}
 		return postgresUsuarioEnderecoEmpresaDAOImpl;
+	}
+
+	@Override
+	public IParametroDAO getPostgresParametroDAO() {// TODO Auto-generated method stub
+		if (postgresParametroDAOImpl == null) {
+			postgresParametroDAOImpl = new PostgresParametroDAOImpl();
+		}
+		return postgresParametroDAOImpl;
+	}
+
+	@Override
+	public IValorParametroDAO getPostgresValorParametroDAO() {
+		if (postgresValorParametroDAOImpl == null) {
+			postgresValorParametroDAOImpl = new PostgresValorParametroDAOImpl();
+		}
+		return postgresValorParametroDAOImpl;
 	}
 }

@@ -16,15 +16,21 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
+
+import br.com.ido.funcoes.Funcoes;
+import br.com.ido.qpedido.enums.ParametroEnum;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
+
 public class QRCodeUtil {
 
 	public static byte[] gerarQRCode(Long codMesa) {
-		String textodoCodigo = "http://localhost:8080/meSirva/ws/mesaEnderecoEmpresa/lerQRCode?codMesa=" + codMesa;
+	
 		//String caminho = "C:/Users/d1396/Desktop/seucurso.png";
 		int tam = 525;
 		String tipoArquivo = "jpg";
 		//File myFile = new File(caminho);
 		try {
+			String textodoCodigo = Funcoes.getParam(ParametroEnum.IP_SERVIDOR.getCodigo()) + "/meSirva/ws/mesaEnderecoEmpresa/lerQRCode?codMesa=" + codMesa;
 			Hashtable hintMap = new Hashtable();
 			hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
 			QRCodeWriter qrCodeWriter = new QRCodeWriter();
@@ -52,7 +58,7 @@ public class QRCodeUtil {
 			baos.close();
 			return imageInByte;
 			
-		} catch (WriterException | IOException e) {
+		} catch (WriterException | IOException | ExcecaoBanco e) {
 			ExcecoesUtil.TratarExcecao(e);
 			return null;
 		}

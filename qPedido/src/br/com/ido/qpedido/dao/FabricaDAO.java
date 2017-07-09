@@ -21,6 +21,10 @@ public abstract class FabricaDAO {
 	public abstract IUsuarioPerfilDAO getPostgresUsuarioPerfilDAO();
 	
 	public abstract IUsuarioEnderecoEmpresaDAO getPostgresUsuarioEnderecoEmpresaDAO();
+	
+	public abstract IParametroDAO getPostgresParametroDAO();
+	
+	public abstract IValorParametroDAO getPostgresValorParametroDAO();
 
 	/**
 	 * Para utilizar de fato a classe {@link FabricaDAO}, uma implementação

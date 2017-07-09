@@ -4,11 +4,15 @@ import java.io.ByteArrayInputStream;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
+
+import javax.persistence.EntityManager;
 
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.log4j.Logger;
@@ -17,8 +21,13 @@ import org.primefaces.model.StreamedContent;
 
 import com.lowagie.text.pdf.codec.Base64.InputStream;
 
-import br.com.ido.qpedido.enums.IEnum;
+import br.com.ido.qpedido.dao.FabricaDAO;
+import br.com.ido.qpedido.entity.qpedido.Parametro;
+import br.com.ido.qpedido.entity.qpedido.ValorParametro;
 import br.com.ido.qpedido.util.PdfUtil;
+import br.com.minhaLib.enums.IEnum;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
+import br.com.minhaLib.excecao.excecaobanco.ExcecaoBancoConexao;
 
 public class Funcoes {
 
@@ -414,6 +423,55 @@ public class Funcoes {
 		}
 
 		return null;
+	}
+	
+
+	public static List<String> getParams(String chave) throws ExcecaoBancoConexao, ExcecaoBanco {
+		Parametro param = new Parametro();
+		param.setChave(chave);
+		ValorParametro valor = new ValorParametro();
+		valor.setParametro(param);
+		List<ValorParametro> listaParametros = FabricaDAO.getFabricaDAO().getPostgresValorParametroDAO()
+				.findByExample(valor);
+		if (listaParametros.size() > 0) {
+			List<String> retorno = new ArrayList<String>();
+			for (ValorParametro valorParametro : listaParametros) {
+				retorno.add(valorParametro.getValor());
+			}
+			return retorno;
+		}
+		return null;
+	}
+
+	public static List<String> getParams(String chave, EntityManager em)
+			throws ExcecaoBancoConexao, ExcecaoBanco {
+		Parametro param = new Parametro();
+		param.setChave(chave);
+		ValorParametro valor = new ValorParametro();
+		valor.setParametro(param);
+		List<ValorParametro> listaParametros = FabricaDAO.getFabricaDAO().getPostgresValorParametroDAO()
+				.findByExample(valor, em);
+		if (listaParametros.size() > 0) {
+			List<String> retorno = new ArrayList<String>();
+			for (ValorParametro valorParametro : listaParametros) {
+				retorno.add(valorParametro.getValor());
+			}
+			return retorno;
+		}
+		return null;
+	}
+
+
+
+	public static String getParam(String chave) throws ExcecaoBancoConexao, ExcecaoBanco {
+		try {
+			final List<String> params = Funcoes.getParams(chave);
+			if (params.size() > 0)
+				return params.get(0);
+			return "";
+		} catch (Exception ex) {
+			return "";
+		}
 	}
 
 	public static String formatarData(Date data, String formato) {

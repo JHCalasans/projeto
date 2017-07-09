@@ -1,5 +1,7 @@
 package br.com.ido.qpedido.enums;
 
+import br.com.minhaLib.enums.IEnum;
+
 public enum TipoRelatorioEnum implements IEnum {
 
 	OFICIO_RPV("/relatorios/etiquetas.jasper", "OficioRPV");

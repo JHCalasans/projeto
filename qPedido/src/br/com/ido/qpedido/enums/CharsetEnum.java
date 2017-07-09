@@ -1,5 +1,6 @@
 package br.com.ido.qpedido.enums;
 
+import br.com.minhaLib.enums.IEnum;
 
 public enum CharsetEnum implements IEnum {
 	ISO("ISO-8859-1", "ISO-8859-1"), 

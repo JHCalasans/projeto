@@ -55,7 +55,7 @@ public class Config implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		try {
 			// Registra qual implementação da fábrica será usada
-			Class.forName("br.com.ido.qpedido.dao.impl.postgres.PostgresFabricaDAO");
+			Class.forName("br.com.ido.mesirva.dao.impl.postgres.PostgresFabricaDAO");
 		} catch (ClassNotFoundException e) {
 			log.error("Erro", e);
 		}
@@ -68,9 +68,9 @@ public class Config implements ServletContextListener {
 			sched = sf.getScheduler();
 
 			// Rotina padrão
-			JobDetail job = newJob(JobProject.class).withIdentity("JobProject", "GrupoQPedido").build();
+			JobDetail job = newJob(JobProject.class).withIdentity("JobProject", "GrupoMeSirva").build();
 
-			Trigger trigger = newTrigger().withIdentity("QPedidoTrigger", "GrupoQPedido").startNow()
+			Trigger trigger = newTrigger().withIdentity("MeSirvaTrigger", "GrupoMeSirva").startNow()
 					.withSchedule(simpleSchedule().withIntervalInHours(1).repeatForever()).build();
 			sched.scheduleJob(job, trigger);
 			sched.start();

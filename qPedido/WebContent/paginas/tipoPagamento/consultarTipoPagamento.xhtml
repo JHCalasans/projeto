@@ -14,52 +14,40 @@
 <ui:composition template="/paginas/masterPage.xhtml">
 	<ui:param name="headerConteudo" value="#{bundle.tipoPagamentoTitulo}" />
 	<ui:param name="bean" value="#{tipoPagamentoBean}" />
-	<ui:param name="actionNovo" value="actionNovo" />
-	<ui:param name="actionAlterar" value="actionAlterar" />
-	<ui:param name="actionExcluir" value="actionExcluir" />
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{homeBean.verificaSessaoValida}" />
+		<f:event type="preRenderView"
+			listener="#{tipoPagamentoBean.verificaSessaoValida}" />
 	</f:metadata>
 
 	<ui:define name="conteudo">
-		<p:dataTable id="tbTiposPagamento" var="tipoPagamento"
-			paginatorAlwaysVisible="false"
-			value="#{tipoPagamentoBean.listaTiposPagamentoEmpresa}"
-			style="text-align: center; max-width:100%"
-			emptyMessage="#{bundle.nenhumRegistroEncontrado}" paginator="false"
-			lazy="false"
-			selection="#{tipoPagamentoBean.tipoPagamentoSelecionado}"
-			rowKey="#{tipoPagamento.codigo}">
 
-			<p:column selectionMode="single" style="width:16px;text-align:center" />
-			<p:column>
+		<p:dataGrid var="tipoPagamentoEmpresa"
+			value="#{tipoPagamentoBean.listaTiposPagamentoEmpresa}" columns="3"
+			layout="grid" paginator="false" id="tpPagamentos"
+			emptyMessage="Nenhum Tipo de Pagamento  encontrado"
+			styleClass="tabela"
+			style="top: 200px; width:100%; 
+					background-color: transparent; margin-top: 10px;">
+
+			<p:panelGrid columns="1" layout="grid"
+				styleClass="ui-panelgrid-blank"
+				style="text-align:center; border-style: solid; border-width: 3%; border-color: transparent; margin-bottom:15px;  border-radius: 5px;">
 				<f:facet name="header">
-					<h:outputText value="#{bundle.tipoPagamentoConsultaEmpresa}"
-						styleClass="cabecalhoDataTable" />
-				</f:facet>
-				<h:outputText value="#{tipoPagamento.enderecoEmpresa.empresa.nome}" />
-			</p:column>
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="#{bundle.tipoPagamentoConsultaTipoPagamento}"
-						styleClass="cabecalhoDataTable" />
+					<h:graphicImage width="25%"
+						value="#{tipoPagamentoEmpresa.tipoPagamento.codigo == 1 ? '/resources/dinheiro.png' : tipoPagamentoEmpresa.tipoPagamento.codigo == 2 or tipoPagamentoEmpresa.tipoPagamento.codigo == 4  ?
+						 '/resources/visa.png' : tipoPagamentoEmpresa.tipoPagamento.codigo == 3 or tipoPagamentoEmpresa.tipoPagamento.codigo == 5  ? '/resources/master.png' :
+						 '/resources/cartao_online.png'}" />
 				</f:facet>
-				<h:outputText value="#{tipoPagamento.tipoPagamento.descricao}" />
-			</p:column>
+				<h2 style="font-size: 120%">#{tipoPagamentoEmpresa.tipoPagamento.descricao}</h2>
+				<p:selectBooleanCheckbox	value="#{tipoPagamentoEmpresa.ativo}">
+					<p:ajax listener="#{tipoPagamentoBean.gravarTipoPagamento(tipoPagamentoEmpresa)}" update="conteudo"/>
+				</p:selectBooleanCheckbox>
 
-			<p:column>
-				<f:facet name="header">
-					<h:outputText value="#{bundle.tipoPagamentoConsultaAtivo}"
-						styleClass="cabecalhoDataTable" />
-				</f:facet>
-				<h:outputText rendered="#{tipoPagamento.ativo}"
-					value="Sim" />
-				<h:outputText rendered="#{not tipoPagamento.ativo}"
-					value="Não" />
-			</p:column>
+			</p:panelGrid>
 
-		</p:dataTable>
+		</p:dataGrid>
+
 	</ui:define>
 </ui:composition>
 </html>

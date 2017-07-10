@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<converter>
 		<converter-id>cnpjConverter</converter-id>
-		<converter-class>br.com.ido.qpedido.util.CnpjConverter</converter-class>
+		<converter-class>br.com.ido.mesirva.util.CnpjConverter</converter-class>
 	</converter>
 	<managed-bean>
 		<managed-bean-name>currentDate</managed-bean-name>
@@ -18,9 +18,9 @@
 		</navigation-case>
 	</navigation-rule>
 	<application>
-		<action-listener>br.com.ido.qpedido.acl.ExceptionHandler</action-listener>
+		<action-listener>br.com.ido.mesirva.acl.ExceptionHandler</action-listener>
 		<resource-bundle>
-			<base-name>br.com.ido.qpedido.util.Bundle</base-name>
+			<base-name>br.com.ido.mesirva.util.Bundle</base-name>
 			<var>bundle</var>
 		</resource-bundle>
 		<locale-config>
@@ -29,10 +29,10 @@
 		</locale-config>
 	</application>
 	<factory>
-		<exception-handler-factory>br.com.ido.qpedido.util.ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
+		<exception-handler-factory>br.com.ido.mesirva.util.ViewExpiredExceptionExceptionHandlerFactory</exception-handler-factory>
 	</factory>
 	<lifecycle>
-		<phase-listener>br.com.ido.qpedido.acl.FaseControleAcesso</phase-listener>
-		<phase-listener>br.com.ido.qpedido.acl.MessageHandler</phase-listener>
+		<phase-listener>br.com.ido.mesirva.acl.FaseControleAcesso</phase-listener>
+		<phase-listener>br.com.ido.mesirva.acl.MessageHandler</phase-listener>
 	</lifecycle>
 </faces-config>

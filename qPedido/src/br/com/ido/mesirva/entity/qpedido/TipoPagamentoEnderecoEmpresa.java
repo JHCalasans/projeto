@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,7 +23,7 @@ import br.com.minhaLib.dao.Entidade;
 @Entity
 @Table(name = TipoPagamentoEnderecoEmpresa.nomeTabela, schema = TipoPagamentoEnderecoEmpresa.esquema, catalog = "projeto")
 @NamedQueries(value = {
-		@NamedQuery(name = "TipoPagamentoEnderecoEmpresa.obterPorEnderecoEmpresa", query = "select t from TipoPagamentoEnderecoEmpresa t "
+		@NamedQuery(name = "TipoPagamentoEnderecoEmpresa.obterPorEnderecoEmpresa", query = "select t from TipoPagamentoEnderecoEmpresa t join fetch t.tipoPagamento tp "
 				+ "where t.enderecoEmpresa.codigo = :codEnderecoEmpresa")
 
 })
@@ -38,11 +39,11 @@ public class TipoPagamentoEnderecoEmpresa extends Entidade {
 	@Column(name = "cod_tipo_pagamento_endereco_empresa", nullable = false)
 	private Integer codigo;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_endereco_empresa", nullable = false, referencedColumnName = "cod_endereco_empresa")
 	private EnderecoEmpresa enderecoEmpresa;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_tipo_pagamento", nullable = false, referencedColumnName = "cod_tipo_pagamento")
 	private TipoPagamento tipoPagamento;
 

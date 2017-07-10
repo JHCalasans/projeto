@@ -8,9 +8,11 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import br.com.ido.mesirva.bo.CadastroBO;
+import br.com.ido.mesirva.bo.TipoPagamentoBO;
 import br.com.ido.mesirva.entity.qpedido.TipoPagamento;
 import br.com.ido.mesirva.entity.qpedido.TipoPagamentoEnderecoEmpresa;
 import br.com.ido.mesirva.util.ExcecoesUtil;
+import br.com.minhaLib.excecao.excecaonegocio.ExcecaoNegocio;
 
 @ManagedBean(name = TipoPagamentoBean.NOME_BEAN)
 @ViewScoped
@@ -32,29 +34,31 @@ public class TipoPagamentoBean extends SimpleController {
 
 	@PostConstruct
 	public void carregar() {
-		try {
-			listaTiposPagamento = CadastroBO.getInstance().obterTiposPagamento();
-			if (getFacesContext().isPostback()) {
-				tipoPagamento = (TipoPagamentoEnderecoEmpresa) getRequestAttribute("tipoPagamento");
-				if (tipoPagamento != null) {
-					codigoTipoPagamento = tipoPagamento.getTipoPagamento().getCodigo();
-				}
-				return;
-			}
-			String codTipoPag = getRequestParam("codTipoPagamento");
-			if (codTipoPag != null && !codTipoPag.isEmpty()) {
-				tipoPagamento = CadastroBO.getInstance().obterTipoPagamentoEmpresa(Integer.valueOf(codTipoPag));
-			} else {
-				tipoPagamento = new TipoPagamentoEnderecoEmpresa();
-			}
-			listaTiposPagamentoEmpresa = CadastroBO.getInstance().obterTiposPagamentoEmpresa();
+		try {		
+			pesquisarTiposPagamentosEmpresa();
 		} catch (Exception e) {
+			ExcecoesUtil.TratarExcecao(e);
+		}
+	}
+	
+	private void pesquisarTiposPagamentosEmpresa() throws ExcecaoNegocio{
+		listaTiposPagamentoEmpresa = TipoPagamentoBO.getInstance().obterTiposPagamentoEmpresa(getUsuarioLogado().getEnderecoEmpresa().getCodigo());
+	}
+	
+	
+	public void gravarTipoPagamento(TipoPagamentoEnderecoEmpresa tipoPagamentoEndEmpresa){
+		tipoPagamentoEndEmpresa.setEnderecoEmpresa(getUsuarioLogado().getEnderecoEmpresa());
+		try {
+			TipoPagamentoBO.getInstance().salvarTipoPagamentoEnderecoEmpresa(tipoPagamentoEndEmpresa);
+			pesquisarTiposPagamentosEmpresa();
+			addMsg(FacesMessage.SEVERITY_INFO, "Alteração feita com sucesso.");
+		} catch (ExcecaoNegocio e) {
 			ExcecoesUtil.TratarExcecao(e);
 		}
 	}
 
 	public void salvarTipoPagamento() {
-		try {
+		/*try {
 			if (tipoPagamento != null) {
 				TipoPagamento tpPagamento = CadastroBO.getInstance().obterTipoPagamento(codigoTipoPagamento);
 				tipoPagamento.setTipoPagamento(tpPagamento);
@@ -63,18 +67,18 @@ public class TipoPagamentoBean extends SimpleController {
 			}
 		} catch (Exception e) {
 			ExcecoesUtil.TratarExcecao(e);
-		}
+		}*/
 	}
 
 	public void desativarTipoPagamento() {
-		try {
+	/*	try {
 			if (tipoPagamento != null) {
 				CadastroBO.getInstance().desativarTipoPagamento(tipoPagamento.getCodigo());
 				addMsg(FacesMessage.SEVERITY_INFO, "Tipo de pagamento desativado com sucesso.");
 			}
 		} catch (Exception e) {
 			ExcecoesUtil.TratarExcecao(e);
-		}
+		}*/
 	}
 
 	public List<TipoPagamentoEnderecoEmpresa> getListaTiposPagamentoEmpresa() {
@@ -146,7 +150,7 @@ public class TipoPagamentoBean extends SimpleController {
 
 	@Override
 	public String actionExcluir() {
-		try {
+		/*try {
 			if (tipoPagamentoSelecionado == null) {
 				addMsg(FacesMessage.SEVERITY_ERROR, "Nenhum tipo de pagamento selecionado.");
 				return null;
@@ -157,7 +161,7 @@ public class TipoPagamentoBean extends SimpleController {
 			}
 		} catch (Exception e) {
 			ExcecoesUtil.TratarExcecao(e);
-		}
+		}*/
 		return null;
 	}
 

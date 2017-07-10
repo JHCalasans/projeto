@@ -18,9 +18,9 @@ public class PostgresTipoPagamentoEnderecoEmpresaDAOImpl extends GenericDAOImpl<
 		implements ITipoPagamentoEnderecoEmpresaDAO {
 
 	@Override
-	public List<TipoPagamentoEnderecoEmpresa> obterTiposPagamentoEmpresa(EntityManager em) throws ExcecaoBanco {
+	public List<TipoPagamentoEnderecoEmpresa> obterTiposPagamentoEmpresa(Integer codEnderecoEmpresa,EntityManager em) throws ExcecaoBanco {
 		Map<String, Object> params = new HashMap<String, Object>();
-		params.put("codEnderecoEmpresa", FacesUtil.getCodEnderecoEmpresa());
+		params.put("codEnderecoEmpresa", codEnderecoEmpresa);
 		return findByNamedQueryAndNamedParams("TipoPagamentoEnderecoEmpresa.obterPorEnderecoEmpresa", params, em);
 	}
 

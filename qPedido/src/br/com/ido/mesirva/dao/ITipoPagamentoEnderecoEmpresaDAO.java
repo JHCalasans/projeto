@@ -13,7 +13,7 @@ public interface ITipoPagamentoEnderecoEmpresaDAO extends GenericDAO<TipoPagamen
 
 	static CriterioOrdenacao BY_CODIGO_ASC = CriterioOrdenacao.asc("codigo");
 
-	public List<TipoPagamentoEnderecoEmpresa> obterTiposPagamentoEmpresa(EntityManager em)
+	public List<TipoPagamentoEnderecoEmpresa> obterTiposPagamentoEmpresa(Integer codEnderecoEmpresa,EntityManager em)
 			throws ExcecaoBanco;
 
 }

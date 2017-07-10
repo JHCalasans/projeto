@@ -28,30 +28,9 @@ public class CadastroBO extends MeSirvaBO {
 		return instance;
 	}
 
-	public TipoPagamentoEnderecoEmpresa salvarTipoPagamento(TipoPagamentoEnderecoEmpresa tipoPagamento)
-			throws ExcecaoNegocio {
-		EntityManager em = emUtil.getEntityManager();
-		EntityTransaction transaction = em.getTransaction();
-		try {
-			transaction.begin();
-			ITipoPagamentoEnderecoEmpresaDAO tipoPagamentoDAO = fabricaDAO.getPostgresTipoPagamentoEnderecoEmpresaDAO();
-			tipoPagamento.setEnderecoEmpresa(getEnderecoEmpresa());
-			if (tipoPagamento.getCodigo() == null) {
-				tipoPagamento.setDataCriacao(new Date());
-				tipoPagamento.setAtivo(true);
-			}
-			tipoPagamento = tipoPagamentoDAO.save(tipoPagamento, em);
-			emUtil.commitTransaction(transaction);
-			return tipoPagamento;
-		} catch (ExcecaoBanco e) {
-			emUtil.rollbackTransaction(transaction);
-			throw new ExcecaoNegocio("Falha ao tentar salvar tipo de pagamento.", e);
-		} finally {
-			emUtil.closeEntityManager(em);
-		}
-	}
 
-	public void desativarTipoPagamento(Integer codigoTipoPagEndEmpresa) throws ExcecaoNegocio {
+
+	/*public void desativarTipoPagamento(Integer codigoTipoPagEndEmpresa) throws ExcecaoNegocio {
 		EntityManager em = emUtil.getEntityManager();
 		EntityTransaction transaction = em.getTransaction();
 		try {
@@ -87,23 +66,7 @@ public class CadastroBO extends MeSirvaBO {
 		}
 	}
 
-	public List<TipoPagamentoEnderecoEmpresa> obterTiposPagamentoEmpresa()
-			throws ExcecaoNegocio {
-		EntityManager em = emUtil.getEntityManager();
-		EntityTransaction transaction = em.getTransaction();
-		try {
-			transaction.begin();
-			ITipoPagamentoEnderecoEmpresaDAO tipoPagamentoDAO = fabricaDAO.getPostgresTipoPagamentoEnderecoEmpresaDAO();
-			List<TipoPagamentoEnderecoEmpresa> result = tipoPagamentoDAO.obterTiposPagamentoEmpresa(em);
-			emUtil.commitTransaction(transaction);
-			return result;
-		} catch (ExcecaoBanco e) {
-			emUtil.rollbackTransaction(transaction);
-			throw new ExcecaoNegocio("Falha ao tentar obter tipos de pagamento da empresa.", e);
-		} finally {
-			emUtil.closeEntityManager(em);
-		}
-	}
+
 
 	public TipoPagamentoEnderecoEmpresa obterTipoPagamentoEmpresa(Integer codigoTipoPagEndEmpresa)
 			throws ExcecaoNegocio {
@@ -138,23 +101,7 @@ public class CadastroBO extends MeSirvaBO {
 		} finally {
 			emUtil.closeEntityManager(em);
 		}
-	}
+	}*/
 
-	public List<TipoPagamento> obterTiposPagamento() throws ExcecaoNegocio {
-		EntityManager em = emUtil.getEntityManager();
-		EntityTransaction transaction = em.getTransaction();
-		try {
-			transaction.begin();
-			ITipoPagamentoDAO tipoPagamentoDAO = fabricaDAO.getPostgresTipoPagamentoDAO();
-			List<TipoPagamento> result = tipoPagamentoDAO.obterTiposPagamentoAtivos(em);			
-			emUtil.commitTransaction(transaction);
-			return result;
-		} catch (ExcecaoBanco e) {
-			emUtil.rollbackTransaction(transaction);
-			throw new ExcecaoNegocio("Falha ao tentar obter tipos de pagamento.", e);
-		} finally {
-			emUtil.closeEntityManager(em);
-		}
-	}
 
 }

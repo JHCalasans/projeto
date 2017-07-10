@@ -44,19 +44,14 @@
 					<h2 style="font-size: 120%">MESA #{mesa.numero}</h2>
 					<p:outputLabel value="#{mesa.ocupada ? 'Ocupada' : 'Livre'}"
 						id="msgOcupada"
-						styleClass="#{mesa.ocupada ? 'msgComFundoVermelho' : 'msgComFundoVerde'}"
-						>
+						styleClass="#{mesa.ocupada ? 'msgComFundoVermelho' : 'msgComFundoVerde'}">
 					</p:outputLabel>
 
 				</p:panelGrid>
 				<f:param name="codMesa" value="#{mesa.codigo}" />
 			</h:link>
 
-
 		</p:dataGrid>
-
-
-
 
 	</ui:define>
 </ui:composition>

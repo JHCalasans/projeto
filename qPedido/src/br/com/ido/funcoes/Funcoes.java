@@ -21,10 +21,10 @@ import org.primefaces.model.StreamedContent;
 
 import com.lowagie.text.pdf.codec.Base64.InputStream;
 
-import br.com.ido.qpedido.dao.FabricaDAO;
-import br.com.ido.qpedido.entity.qpedido.Parametro;
-import br.com.ido.qpedido.entity.qpedido.ValorParametro;
-import br.com.ido.qpedido.util.PdfUtil;
+import br.com.ido.mesirva.dao.FabricaDAO;
+import br.com.ido.mesirva.entity.qpedido.Parametro;
+import br.com.ido.mesirva.entity.qpedido.ValorParametro;
+import br.com.ido.mesirva.util.PdfUtil;
 import br.com.minhaLib.enums.IEnum;
 import br.com.minhaLib.excecao.excecaobanco.ExcecaoBanco;
 import br.com.minhaLib.excecao.excecaobanco.ExcecaoBancoConexao;
